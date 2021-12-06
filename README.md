@@ -1,0 +1,2 @@
+# nftdaofond
+nftdaofond s an experimental project that has the goal to unify the top solutions for different types of DAO management and expansion. We aim to create a project controlled and developed by the token holders in a way that can unify the efficient management of assets and the NFT auction model open for the community by applying a structure where all community members matter and feel that their participation is needed.
