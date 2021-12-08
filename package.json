@@ -1,0 +1,14 @@
+{
+  "requires": true,
+  "lockfileVersion": 1,
+  "scripts": {
+    "compile": "truffle compile",
+    "test": "truffle test",
+    "deploy-ropsten": "truffle deploy --network ropsten"
+  },
+  "dependencies": {
+    "openzeppelin-solidity": "4.4.0",
+    "truffle": "^5.4.21",
+    "truffle-hdwallet-provider": "^1.0.17"
+  }
+}
