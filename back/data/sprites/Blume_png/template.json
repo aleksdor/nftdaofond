@@ -1,0 +1,19 @@
+{
+	"name": "Blumberg image #{{i}}",
+	"symbol": "BLI",
+	"description": "",
+	"seller_fee_basis_points": 500,
+	"collection": {
+		"name": "Chaplin",
+		"family": "Chaplin's world"
+	},
+	"properties": {
+		"category": "image/png",
+		"creators": [
+			{
+				"address": "4JcstShPChyzCQdBMFuBEgUnm4STcRcZp7eRqNtSQZMb",
+				"share": 100
+			}
+		]
+	}
+}

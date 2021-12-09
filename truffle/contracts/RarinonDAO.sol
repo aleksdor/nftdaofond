@@ -17,7 +17,7 @@ contract RarinonDAO {
     uint32 _quorum; // How many votes nedded to accept or reject voting.
 
     struct Proposal{
-        address recepinet;
+        address account;
         uint256 amount;
         string title;
         string url;
@@ -26,11 +26,20 @@ contract RarinonDAO {
         uint32 nno;
         uint256 end_at;
         bool closed;
+        bool approved;
     }
 
-    Proposal[] public history;
+    Proposal[] _history;
 
-    constructor(address nft, uint256 round_sec, uint8 quorum) {
+    function historyCount() public view returns (uint256){
+        return _history.length;
+    }
+
+    function history(uint256 index) public view returns (Proposal memory){
+        return _history[index];
+    }
+
+    constructor(address nft, uint256 round_sec, uint32 quorum) {
         _nft = IERC721(nft);
         _round_sec = round_sec;
         _quorum = quorum;
@@ -42,8 +51,8 @@ contract RarinonDAO {
     }
 
     function didVote(address voter, uint256 vote_id) public view returns (bool) {
-        require(vote_id < history.length);
-        Proposal memory proposal = history[vote_id];
+        require(vote_id < _history.length);
+        Proposal memory proposal = _history[vote_id];
         for (uint256 i = 0; i < proposal.voters.length; i++){
             if (proposal.voters[i] == voter) return true;
         }
@@ -51,19 +60,22 @@ contract RarinonDAO {
     }
 
     // Добавить голосование.
-    function addProposal(address recepinet, uint256 amount, string memory title, string memory url) onlyMember public {
+    function addProposal(address account, uint256 amount, string memory title, string memory url) onlyMember public {
         require(address(this).balance >= amount, "Not sufficient funds");
 
         address[] memory dump;
-        Proposal memory proposal = Proposal(recepinet, amount, title, url, dump, 0, 0, block.timestamp + _round_sec, false);
-        history.push(proposal);
+        Proposal memory proposal = Proposal(account, amount, title, url, dump, 0, 0, block.timestamp + _round_sec, false, false);
+        _history.push(proposal);
     }
 
     //
     function voteYes(uint256 vote_id) onlyMember public {
         require(!didVote(msg.sender, vote_id), "Already voted");
 
-        Proposal storage proposal = history[vote_id];
+        Proposal storage proposal = _history[vote_id];
+        require(!proposal.closed, "Already closed");
+
+        proposal.nyes = proposal.nyes + 1;
         proposal.voters.push(msg.sender);
 
         if (canClose(vote_id)) close(vote_id);
@@ -72,30 +84,34 @@ contract RarinonDAO {
     function voteNo(uint256 vote_id) onlyMember public {
         require(!didVote(msg.sender, vote_id), "Already voted");
 
-        Proposal storage proposal = history[vote_id];
+        Proposal storage proposal = _history[vote_id];
+        require(!proposal.closed, "Already closed");
+
+        proposal.nyes = proposal.nno + 1;
         proposal.voters.push(msg.sender);
 
         if (canClose(vote_id)) close(vote_id);
     }
 
     function canClose(uint256 vote_id) public view returns (bool){
-        require(vote_id < history.length);
-        Proposal memory proposal = history[vote_id];
+        require(vote_id < _history.length);
+        Proposal memory proposal = _history[vote_id];
 
-        return proposal.nyes >= _quorum || proposal.nno >= _quorum || block.timestamp >= proposal.end_at;        
+        return !proposal.closed && (proposal.nyes >= _quorum || proposal.nno >= _quorum || block.timestamp >= proposal.end_at);
     }
 
     function close(uint256 vote_id) public {
         require(canClose(vote_id));
         
-        Proposal memory proposal = history[vote_id];
+        Proposal storage proposal = _history[vote_id];
         require(!proposal.closed, "Already closed");
 
         proposal.closed = true;
 
-        // Quorum agreed proposal. Transfer money and close proposal.
+        // Quorum agreed proposal. Transfer money.
         if (proposal.nyes >= _quorum){
-             payable(proposal.recepinet).transfer(proposal.amount);
+            proposal.approved = true;
+            payable(proposal.account).transfer(proposal.amount);
         }
     }
 
