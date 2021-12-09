@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
 import main01 from '../../assets/img/main01.png';
 import MiniCard from '../MiniCard';
