@@ -1,0 +1,539 @@
+{
+	"kickLotteryAbi": [
+	  {
+		"inputs": [
+		  {
+			"internalType": "address",
+			"name": "_token",
+			"type": "address"
+		  },
+		  {
+			"internalType": "uint8",
+			"name": "_playPeriodBlock",
+			"type": "uint8"
+		  },
+		  {
+			"internalType": "uint8",
+			"name": "_payPercent",
+			"type": "uint8"
+		  },
+		  {
+			"internalType": "uint8",
+			"name": "_burnPercent",
+			"type": "uint8"
+		  },
+		  {
+			"internalType": "uint256",
+			"name": "_minBidValue",
+			"type": "uint256"
+		  },
+		  {
+			"internalType": "uint256",
+			"name": "_minJackpotDepBidValue",
+			"type": "uint256"
+		  },
+		  {
+			"internalType": "uint256",
+			"name": "_rndBase",
+			"type": "uint256"
+		  },
+		  {
+			"internalType": "uint256",
+			"name": "_maxMemebers",
+			"type": "uint256"
+		  }
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	  },
+	  {
+		"inputs": [],
+		"name": "BurnedTotal",
+		"outputs": [
+		  {
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		  }
+		],
+		"name": "History",
+		"outputs": [
+		  {
+			"internalType": "uint256",
+			"name": "StartDate",
+			"type": "uint256"
+		  },
+		  {
+			"internalType": "uint256",
+			"name": "EndDate",
+			"type": "uint256"
+		  },
+		  {
+			"internalType": "uint256",
+			"name": "EndBlock",
+			"type": "uint256"
+		  },
+		  {
+			"internalType": "uint256",
+			"name": "Jackpot",
+			"type": "uint256"
+		  },
+		  {
+			"internalType": "uint256",
+			"name": "MembersCount",
+			"type": "uint256"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "IsActive",
+		"outputs": [
+		  {
+			"internalType": "bool",
+			"name": "",
+			"type": "bool"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "PayedTotal",
+		"outputs": [
+		  {
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "RoundNumber",
+		"outputs": [
+		  {
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "Token",
+		"outputs": [
+		  {
+			"internalType": "address",
+			"name": "",
+			"type": "address"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "burnPercent",
+		"outputs": [
+		  {
+			"internalType": "uint8",
+			"name": "",
+			"type": "uint8"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "maxMemebers",
+		"outputs": [
+		  {
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "minBidValue",
+		"outputs": [
+		  {
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "minJackpotDepBidValue",
+		"outputs": [
+		  {
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+		  {
+			"internalType": "address",
+			"name": "",
+			"type": "address"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "payPercent",
+		"outputs": [
+		  {
+			"internalType": "uint8",
+			"name": "",
+			"type": "uint8"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "playPeriodBlocks",
+		"outputs": [
+		  {
+			"internalType": "uint8",
+			"name": "",
+			"type": "uint8"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "rndBase",
+		"outputs": [
+		  {
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "uint256",
+			"name": "index",
+			"type": "uint256"
+		  }
+		],
+		"name": "roundMembers",
+		"outputs": [
+		  {
+			"internalType": "address[]",
+			"name": "",
+			"type": "address[]"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "uint256",
+			"name": "index",
+			"type": "uint256"
+		  }
+		],
+		"name": "roundBalances",
+		"outputs": [
+		  {
+			"internalType": "uint256[]",
+			"name": "",
+			"type": "uint256[]"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "uint256",
+			"name": "index",
+			"type": "uint256"
+		  }
+		],
+		"name": "roundWinners",
+		"outputs": [
+		  {
+			"internalType": "bool[]",
+			"name": "",
+			"type": "bool[]"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "isRoundFinished",
+		"outputs": [
+		  {
+			"internalType": "bool",
+			"name": "",
+			"type": "bool"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "checkRound",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "bytes32",
+			"name": "hashBlockX",
+			"type": "bytes32"
+		  }
+		],
+		"name": "checkRoundAdmin",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "uint8",
+			"name": "_value",
+			"type": "uint8"
+		  }
+		],
+		"name": "setPlayPeriodBlocks",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "uint8",
+			"name": "_value",
+			"type": "uint8"
+		  }
+		],
+		"name": "setPayPercent",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "uint8",
+			"name": "_value",
+			"type": "uint8"
+		  }
+		],
+		"name": "setBurnPercent",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "uint256",
+			"name": "_value",
+			"type": "uint256"
+		  }
+		],
+		"name": "setMinBidValue",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "uint256",
+			"name": "_value",
+			"type": "uint256"
+		  }
+		],
+		"name": "setMinJackpotDepBidValue",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "uint256",
+			"name": "_value",
+			"type": "uint256"
+		  }
+		],
+		"name": "setRndBase",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "uint256",
+			"name": "_value",
+			"type": "uint256"
+		  }
+		],
+		"name": "setMaxMemebers",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "uint256",
+			"name": "amount",
+			"type": "uint256"
+		  }
+		],
+		"name": "join",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "address",
+			"name": "",
+			"type": "address"
+		  },
+		  {
+			"internalType": "address",
+			"name": "user",
+			"type": "address"
+		  },
+		  {
+			"internalType": "uint256",
+			"name": "amount",
+			"type": "uint256"
+		  },
+		  {
+			"internalType": "bytes",
+			"name": "",
+			"type": "bytes"
+		  }
+		],
+		"name": "onTransferReceived",
+		"outputs": [
+		  {
+			"internalType": "bytes4",
+			"name": "",
+			"type": "bytes4"
+		  }
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "Kill",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "address",
+			"name": "transferJackpotTo",
+			"type": "address"
+		  }
+		],
+		"name": "Kill2",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "Jackpot",
+		"outputs": [
+		  {
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "address",
+			"name": "member",
+			"type": "address"
+		  }
+		],
+		"name": "memberExists",
+		"outputs": [
+		  {
+			"internalType": "bool",
+			"name": "",
+			"type": "bool"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  }
+	]
+  }
+  

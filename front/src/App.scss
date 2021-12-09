@@ -1,0 +1,36 @@
+﻿// fonts
+@font-face {
+	font-family: "Fuzzy Bubbles";
+	font-weight: 400;
+	src: url("./assets/fonts/FuzzyBubbles-Regular.ttf") format("truetype"),
+}
+
+@font-face {
+	font-family: "Fuzzy Bubbles";
+	font-weight: 700;
+	src: url("./assets/fonts/FuzzyBubbles-Bold.ttf") format("truetype"),
+}
+@font-face {
+	font-family: "Rajdhani";
+	font-weight: 300;
+	src: url("./assets/fonts/Rajdhani-Light.ttf") format("truetype"),
+}
+@font-face {
+	font-family: "Rajdhani";
+	font-weight: 400;
+	src: url("./assets/fonts/Rajdhani-Regular.ttf") format("truetype"),
+}
+@font-face {
+	font-family: "Rajdhani";
+	font-weight: 100;
+	src: url("./assets/fonts/Rajdhani-Bold.ttf") format("truetype"),
+}
+// libs
+
+// pages
+@import './assets/scss/_page.scss';
+@import './assets/scss/_main.scss';
+@import './assets/scss/_vote.scss';
+@import './assets/scss/_playground.scss';
+// elements
+@import './assets/scss/header.scss';

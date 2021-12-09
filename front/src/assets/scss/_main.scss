@@ -1,0 +1,339 @@
+﻿.bg {
+    background-color: #eeeeee;
+    .auction-content {
+        display:flex;
+        .auction-wrapper {
+            align-self: flex-end;
+            width: 100%;
+            .auction-img {
+                position: relative;
+                padding-top: 100%;
+                width: 100%;
+                height: 0;
+                .img-noun {
+                    position: absolute;
+                    top: 0;
+                    left: 20%;
+                    width: 70%;
+                    height: auto;
+                }
+            }
+        }
+    }
+    .auction-data{
+        font-weight: 500;
+        padding-top: 2rem;
+        .auction-information{
+            margin-bottom: 2rem;
+            .auction-activity {
+                margin-bottom: 1rem;
+                .data {
+                    font-family: "Rajdhani";
+                    font-size: 1rem;
+                    font-weight: 400;
+                }
+            }.auction-title {
+                display: flex;
+                .auction-descr {
+                    display: inline-block;
+                }.name {
+                    font-family: "Fuzzy Bubbles";
+                    font-weight: 700;
+                    font-size: 3rem;
+                }
+            }.auction-navigation {
+                position: absolute;
+                margin-top: 0.6rem;
+                margin-left: 14rem;
+                .auction-navigation-left {
+                    display: inline-block;
+                    width: 2rem;
+                    height: 2rem;
+                    border: none;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-color: transparent;
+                    font-size: xx-large;
+                }
+            }.auction-navigation-right {
+                display: inline-block;
+                width: 2rem;
+                height: 2rem;
+                border: none;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-color: transparent;
+                font-size: xx-large;
+            }
+        }.auction-price {
+            border-right: 1px solid #000000;
+            
+        }.carrent-title {
+            font-family: "Rajdhani";
+            font-size: 1rem;
+            font-weight: 400;
+        } .carrent-descr {
+            font-family: "Rajdhani";
+            font-weight: 400;
+            font-size: 2.5rem;
+        }
+    }.auction-timer {
+        padding-left: 3rem;
+        .timer-title{
+            font-family: "Rajdhani";
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            font-weight: 400;
+        }.timer-descr {
+            display: flex;
+            font-size: 2.5rem;
+            .section-timer {
+                font-family: "Rajdhani";
+                font-weight: 400;
+                margin-right: 0.5rem;
+                .hours {
+                    padding-left: 2px;
+                    font-size: 24px;
+                }.minutes {
+                    padding-left: 2px;
+                    font-size: 24px;
+                }.seconds {
+                    padding-left: 2px;
+                    font-size: 24px;
+                }
+            }
+        }
+    }.mini-bid { 
+        padding-top: 0;
+        font-size: 12px;
+        margin-left: 4px;
+    }.input-group {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        width: 89%
+    }.input-group.form-control {
+        position: relative; 
+        flex: 1 1 auto;
+        width: 1%;
+        min-width: 0;
+    }.group {
+        height: 50px;
+        color: #000;
+        border: 1px solid #aaaaaa;
+        border-radius: 0.25rem;
+        background-color: #ffffff;
+        font-weight: 700;
+        outline: none;
+        box-shadow: none;
+    }.group-title {
+        position: absolute;
+        top: 25%;
+        left: 52%;
+        font-weight: 700;
+        color: #aaaaaa;
+        z-index: 3;
+    }.button-main {
+        margin-left: 1rem!important;
+        border-radius: 0.25rem!important;
+        width: 35%;
+        height: 3rem;
+        color: #fff;    
+        font-weight: 700;
+        background-color: #A29F9E;
+        border: none;
+    }
+}.history-links {
+    display: grid;
+    text-align: start;
+    list-style-type: none;
+    grid-row-gap: 0.5rem;
+    row-gap: 0.5rem;
+    padding: 0;
+    .history-bid {
+        background-color: hsla(0,0%,100%,.3);
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        border-bottom: 1px solid hsla(0,0%,82.7%,.322);
+        font-size: .9rem;
+        font-weight: 600;
+        .history-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .bid-history-left {
+                display: flex;
+                flex-direction: column;
+                .history-bidder {
+                    font-size: .9rem;
+                    font-weight: 600;
+                    .history-address {
+                        display: flex;
+                        flex-direction: row;
+                        column-gap: 0.25rem;
+                        align-items: center;
+                        font-family: 'Rajdhani';
+                        font-weight: 700;
+                        .icon {
+                            overflow: hidden;
+                            width: 24px;
+                            height: 24px;
+                            background-color: rgb(3, 67, 93);
+                            border-radius: 12px;
+                        }
+                    }
+                }
+            }.history-data {
+                display: none;
+                color: grey;
+            }
+        }.bid-history-right {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            .history-price {
+                margin-right: 1rem;
+            }
+        }.svg-inline--fa {
+            display: inline-block;
+            font-size: inherit;
+            height: 1em;
+            overflow: visible;
+            vertical-align: -0.125em;
+            color: #000000;
+        }
+    }.history-btn {
+        display: flex;
+    }
+}.history-btn-bid {
+    font-family: "Rajdhani";
+    font-weight: 700;
+    margin-left: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    &:hover {
+        box-shadow: none;
+        color: #D63C5E;
+    }
+}
+
+// NounEveryDay
+
+.section-container {
+    padding: 30px 0;
+    .align-items {
+        align-items: center;
+    }.banner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        h1 {
+            font-family: "Fuzzy Bubbles";
+            font-size: 5rem;
+            font-weight: 700;
+        }
+    }.img-wrapper {
+        padding: 40px;
+        .noun-img {
+            position: relative;
+            padding-top: 100%;
+            width: 100%;
+            height: 0;
+            .imgmain {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: auto;
+                vertical-align: middle;
+            }
+        }
+    }
+}
+
+// BlogInformation
+
+.documentation {
+    font-size: 20px;
+    h1 {
+        font-family: "Fuzzy Bubbles";
+        font-weight: 700;
+    }
+    p {
+        font-family: "Rajdhani";
+        font-weight: 400;
+        margin: 48px 0;
+    }.text-link {
+        color: #d63c5e;
+    }
+}
+
+// Collapse
+
+.documentation-item {
+    margin-bottom: 40px;
+    border: none;
+    .documentation-header {
+        .documentation-button {
+            border: none;
+            font-family: "Fuzzy Bubbles";
+            font-weight: 400;
+            font-size: 40px;
+            cursor: pointer;
+            line-height: normal;
+            padding-top: 0;
+            padding-bottom: 0;
+            &:not(.collapsed) {
+                color: #000000;
+                background-color: transparent;
+                box-shadow: none;
+            }
+            &:focus {
+                box-shadow: none;
+                color: #D63C5E;
+            }
+            &:hover {
+                box-shadow: none;
+                color: #D63C5E;
+            }
+        }
+    }.text-link {
+        color: #d63c5e;
+    }li {
+        font-weight: 400;
+    font-family: 'Rajdhani';
+    }
+    p {
+        font-weight: 400;
+    font-family: 'Rajdhani';
+    }
+}
+.accordion-button:not(.collapsed)::after {
+    background-image: url('../img/accordionArrow.svg');
+}
+
+// Modal
+
+.modal-header {
+    border-bottom: none;
+    justify-content: flex-start;
+    align-items: center;
+    .img-wtf {
+        width: 150px;
+        height: 150px;
+    }
+}.modal-descr {
+    font-size: xx-large;
+    margin-left: 2rem;
+}.close {
+    align-self: flex-start;
+}
+
+
+
+
+
+

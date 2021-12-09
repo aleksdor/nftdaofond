@@ -1,0 +1,46 @@
+﻿.vote-title {
+    font-family: "Fuzzy Bubbles";
+    display: inline-block;
+    font-weight: 700;
+    font-size: 3rem;
+}.vote-descr {
+    font-family: "Rajdhani";
+    font-weight: 400;
+    color: var(--brand-dark-green);
+    font-size: 1.2rem;
+    padding: 5px;
+}.proposals {
+    display: flex;
+    flex-direction: column;
+    .proposals-title {
+        font-family: "Fuzzy Bubbles";
+        font-weight: 700;
+        display: inline-block;
+        font-size: 2rem;
+        margin: 0;
+    }
+}.proposals > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}.proposals-btn {
+    padding: 0.9rem 1.5rem;
+    border-radius: 5px;
+    border: 0;
+    font-size: large;
+    font-weight: 400;
+    cursor: default;
+    &:hover {
+        background: #686868;
+    }
+}.proposals-link {
+    padding: 1rem;
+    margin-top: 0.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}.link-title {
+    font-family: "Rajdhani";
+    font-weight: 400;
+}

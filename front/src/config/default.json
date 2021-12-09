@@ -1,0 +1,9 @@
+{
+	"networkParameters": {
+	  "rpc": "https://ropsten.infura.io/v3/010ca5412a6e47f28f00bb896bf11922"
+	},
+	"rarinonDAOAddress": "0x47A8b798E48A7360914B2cFce3eA6A1Bee18540a",
+	"rarinonNFTAddress": "0x27EFEd18FF3E9Da2387b028FD6e301CD110E6e6E",
+	"rarinonAuctionAddress": "0x8352f02CedEF433644e99F571737b68364488384"
+  }
+  
