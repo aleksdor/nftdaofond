@@ -1,203 +1,145 @@
 const fs = require('fs')
-
 var Web3 = require('web3');
-
 const HDWalletProvider = require('@truffle/hdwallet-provider');
+
+const TokenHelper = require('./TokenHelper');
 
 const conf = require('./conf')
 let provider = new HDWalletProvider(conf.web3_pk, conf.web3_url)
 var web3 = new Web3(provider);
 
-// let abi = JSON.parse(fs.readFileSync('./contracts/GameItemNFT.abi').toString());
-// let code = '0x' + fs.readFileSync('./contracts/GameItemNFT.bin').toString()
+let tokenHelper = new TokenHelper()
 
-async function star222() {
-    let tx = {
-        // from: A1,
-        // gasPrice: "20000000000",
-        gas: "1000000",
-        // to: A2,
-        to: null, //'0x0000000000000000000000000000000000000000',
-        // to: '0',
-        // value: "0x00",
-        // nonce: "0x00",
-        data: code
+
+let instances = fs.existsSync('./data/instances.json') ? require('./data/instances.json') : {}
+
+/**
+ * Создать или загрузить контракт.
+ * @param {*} json_file Путь к файлу контракта (build от truffle)
+ * @param {*} arguments Аргументы создания контракта.
+ * @returns 
+ */
+async function instance(json_file, arguments) {
+    let json = require(json_file)
+    if (instances[json_file]) {
+        console.log(`Address ${instances[json_file].address} found for ${json_file}`)
+        return new web3.eth.Contract(json.abi, instances[json_file].address) //'0xC21F049fa08858839b9E6646970469E23A3575c7')
     }
 
-    // let tx2 = await web3.eth.signTransaction(tx, privateKey)
-    let signedTx = await web3.eth.accounts.signTransaction(tx, A1PK);
-    // console.log(signedTx)
+    let contract = new web3.eth.Contract(json.abi)
 
-    const sentTx = await web3.eth.sendSignedTransaction(signedTx.raw || signedTx.rawTransaction);
-    console.log('sentTx', sentTx)
+    try {
+        let res = await contract
+            .deploy({ data: json.bytecode, arguments })
+            .send({
+                from: conf.web3_address,
+                gas: '3000000'
+            })
 
-    function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
+        console.log(`Address ${res._address} created for ${json_file}`)
+
+        instances[json_file] = { ...instances[json_file], address: res._address }
+        fs.writeFileSync('./data/instances.json', JSON.stringify(instances, null, '\t'))
+        // console.log(res._address)
+        return res
     }
-
-    let hash = '0x02a2a4b42e1278c7d1a2b50fcde53bf51957f4a16954ff03dc8bdd9198c97a27'
-
-    await sleep(3000)
-    for (let i = 0; i < 30; i++) {
-        // let ttx = await web3.eth.getTransaction(sentTx.transactionHash);
-        // console.log(ttx)    
-
-        let receipt = await web3.eth.getTransactionReceipt(sentTx.transactionHash);
-        console.log(receipt.contractAddress)
-
-        // let balance = await web3.eth.getBalance(A1)
-        // console.log(balance)
-
-        // balance = await web3.eth.getBalance(A2)
-        // console.log(balance)
-        await sleep(3000)
+    catch (ex) {
+        console.log(ex)
     }
-
-    let balance = await web3.eth.getBalance(A3)
-    console.log(balance)
-
-
-    // return
-
-    // //.send({ from: A1, gas: 1000000 });
-    // // Transaction has entered to geth memory pool
-    // console.log("Your contract is being deployed in transaction at http://testnet.etherscan.io/tx/" + contract.transactionHash);
-
-    // // console.log(contract)
-
-    // while (true) {
-    //     let receipt = web3.eth.getTransactionReceipt(contract.transactionHash);
-    //     if (receipt && receipt.contractAddress) {
-    //         console.log("Your contract has been deployed at http://testnet.etherscan.io/address/" + receipt.contractAddress);
-    //         console.log("Note that it might take 30 - 90 sceonds for the block to propagate befor it's visible in etherscan.io");
-    //         break;
-    //     }
-    //     console.log("Waiting a mined block to include your contract... currently in block " + web3.eth.blockNumber);
-    //     await sleep(4000);
-    // }
-
-
-    // let balance = await web3.eth.getBalance(A1)
-    // console.log(balance)
 }
 
+let nft, dao, auction
 
-let NFT_address = '0x45A6D8C7d6eC1C0E2392a57b802e3eADD019ca47'
+async function start() {
+    nft = await instance('./contracts/RarinonNFT.json', ['Name', 'SYMBOL'])
+    dao = await instance('./contracts/RarinonDAO.json', [nft._address, 30, 3])
+    auction = await instance('./contracts/RarinonAuction.json', [nft._address, dao._address, 30])
 
-function init() {
-
-}
-
-async function deploy_contract(){
-    let nft = new web3.eth.Contract(abi)
-    nft.setProvider(provider)
-
-    let res = await nft.deploy({data: code
-        // ,arguments: [123, 'My String']
-    }).send({
-        from: A3,
-        gas: '3000000'
-    })
-
-    console.log(res._address)
-
-}
-
-
-async function mint_token(adr) {
-    let nft = new web3.eth.Contract(abi, adr)
-    nft.setProvider(provider)
-    let res = await nft.methods.awardItem(A3, 'some string').send({
-        from: A3,
-        gas: '7000000'
-    })
-    console.log(res)
-}
-
-async function token_id(){
-    let nft = new web3.eth.Contract(abi, adr)
-    nft.setProvider(provider)
-    let res = await nft.methods.CurrentID().call({
-        from: A3,
-        gas: '7000000'
-    })
-    console.log(res)
-}
-
-async function token_url(id){
-    let nft = new web3.eth.Contract(abi, adr)
-    nft.setProvider(provider)
-    let res = await nft.methods.tokenURI(id).call({
-        from: A3,
-        gas: '7000000'
-    })
-    console.log(res)
-}
-
-function start_auction(token, end_at) {
-
-}
-
-
-// deploy_contract()
-let adr = '0xD28fB2207FaC9Da7839Cd5DED51558d4754a8eA2'
-
-
-
-// const Rarinon = require('./rarinoun')
-const cm = require('./services/candy_machine')
-const TraitSet = require('./models/trait_set')
-const IPFS = require('./services/ipfs_infura')
-
-let ipfs = new IPFS('', '')
-
-
-async function start(){
-    // - Развернем конракт NFT токена
-
-
-    
-    // Создаем контракт если его еще не было или загружаем из кеша.
-    // let ru = await Rarinon.init() 
-
-    // --- Готовим данные для токена
-    // - Читаем папку слоев и генерируем по именам карту черт и читаем шаблон json-файла токена.
-    let trs = TraitSet.fromDir('./data/sprites/Blume_png/')
-
-    // - Создаем случайный набор черт
-    // let ts1 = TraitSet.clean_traits(trs.get_random_trs())
-    let ts1 = trs.get_random_trs()
-
-    // - Генерируем по ним картинку токена (в памяти)
-    let img = await cm.build_nft_image(ts1, trs.dir)
-    // console.log(img)
-
-    // - Льем картинку в IPFS (из памяти)
-    let ret = await ipfs.upload_file(await img.getBufferAsync("image/png"))    
-    // - Получим нормальную ссылку на картинку в ipfs
-    let image_url = ipfs.get_link(ret.path)
-
-    // console.log(image_url)
-
-    // - Парсим json шаблон токена.
-    let tpl = trs.template()
-    let json = cm.build_nft_json(tpl, ts1, image_url)
-
-    // - Льем json в IPFS
-    let ret_json = await ipfs.upload_file(JSON.stringify(json))
-    // - Получим нормальную ссылку на картинку в ipfs
-    let json_url = ipfs.get_link(ret_json.path)
-
-    console.log(json_url)
-
-    // - Минтим токен боту и подставляем ему созданный адрес ipfs.
-    // await ru.nft.mint(json_url)
-
-    // - Получаем все токены контракта для дебага.
-    // let all = await ru.nft.getAll()
-
-    // - Выводим их.
-    // console.log(all)
+    // loop_auction_worker()
+    loop_dao_worker()
 }
 
 start()
+
+// Постоянно запрашиваем можно ли закрыть аукцион.
+async function loop_auction_worker() {
+
+    try {
+        // Если можно закрываем.
+        let need_create_round = false
+
+        let count = await auction.methods.historyCount().call()
+        if (count == 0) {
+            need_create_round = true;
+        }
+        else {
+            let can = await auction.methods.canClose().call()
+            if (can) {
+                console.log('Closing round...')
+                await auction.methods.close().send({ from: conf.web3_address })
+                need_create_round = true;
+            }
+            else {
+                let last = await auction.methods.history(count - 1).call()
+                if (last.closed) need_create_round = true
+            }
+        }
+
+        if (need_create_round) {
+            console.log('Creating new round...')
+            let token_url = await tokenHelper.crteate_token()
+            console.log('token_url', token_url)
+            await nft.methods.mint(auction._address, token_url).send({ from: conf.web3_address })
+            let id = await nft.methods.CurrentID().call()
+            await auction.methods.createRound(id).send({ from: conf.web3_address })
+            console.log('Created')
+        }
+        console.log(count)
+    }
+    catch (ex) {
+        console.log('loop_auction_worker error', ex)
+    }
+
+    setTimeout(loop_auction_worker, 5000);
+}
+
+
+
+// Постоянно запрашиваем можно ли закрыть аукцион.
+let proposals = []
+
+async function loop_dao_worker() {
+
+    try {
+        // Получим все запросы в дао.
+
+
+        // Если можно закрываем.
+        let count = await dao.methods.historyCount().call()
+        for (let i = proposals.length; i < count; i++){
+            let proposal = await dao.methods.history(i).call()
+            proposals.push(proposal)
+        }
+        console.log(count)
+
+        for (let i = 0; i < proposals.length; i++){
+            if (!proposals[i].closed){
+                let can = await dao.methods.canClose(i)
+                if (can){
+                    console.log(`Closing proposal ${i}...`)
+                    await dao.methods.close(i).send({ from: conf.web3_address })
+                    proposals[i].closed = true
+                    console.log(`Closed`)
+                }
+            }
+        }
+    }
+    catch (ex) {
+        console.log('loop_dao_worker error', ex)
+    }
+
+    setTimeout(loop_dao_worker, 5000);
+}
+
+// Получаем все запросы денег.
+// Проверяем какие открыты

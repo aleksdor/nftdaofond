@@ -2,9 +2,9 @@
   "requires": true,
   "lockfileVersion": 1,
   "scripts": {
-    "truffle:compile": "cd truffle && truffle compile",
-    "truffle:test": "cd truffle && truffle test",
-    "truffle:deploy-ropsten": "cd truffle && truffle deploy --network ropsten"
+    "compile": "truffle compile",
+    "test": "truffle test",
+    "deploy-ropsten": "truffle deploy --network ropsten"
   },
   "dependencies": {
     "openzeppelin-solidity": "4.4.0",
