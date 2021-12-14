@@ -1,0 +1,26 @@
+.navbar-bg {
+  background-color: #eeeeee;
+  .icon-header {
+    width: 85px;
+    height: 85px;
+  }
+  .routes {
+    .route {
+      font-size: 14px;
+      padding: 0.5rem 0.8rem;
+      color: var(--brand-black);
+      text-decoration: none;
+      padding-left: 10px;
+      &:first-child {
+        padding-left: 0;
+      }
+      &:hover {
+        cursor: pointer;
+        color: #d63c5e;
+      }
+      &:focus {
+        color: #d63c5e;
+      }
+    }
+  }
+}
