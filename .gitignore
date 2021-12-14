@@ -3,3 +3,4 @@ node_modules
 truffle-config.js
 robot/data
 back/conf.js
+front/serveStart.sh
