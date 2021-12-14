@@ -198,34 +198,52 @@ const GreenHouse = () => {
 	}
 
 	const merge = () => {
-		let newNouns = []
-		const images = mergeData.map(({ link }) => link)
+		let newNouns = nouns
+		const images = mergeData.map(({ link, random, data }) => random ? data[Math.floor(Math.random() * data.length)].link : link)
 		mergeImages(images).then(b64 => {
-			newNouns.push(b64)
-			setNouns(newNouns)
+			newNouns.unshift(b64)
+			setNouns([...newNouns])
 		});
 	}
 
-	const pushMergeData = ({ folderName, link }) => {
+	const pushMergeData = ({ folderName, link, data }) => {
 		let result = mergeData
-		let selectedItem = result.find((item) => item.folderName === folderName)
-		result = result.map((item) => item.folderName === folderName ? { folderName, link } : item)
+		result = result.map((item) => {
+			if (item.folderName === folderName) {
+				return {
+					folderName,
+					link: link === 'random' ? data[Math.floor(Math.random() * data.length)].link : link,
+					random: link === 'random' ? true : false,
+					data
+				}
+			}
+			else {
+				return item
+			}
+		})
 		setMergeData(result)
 	}
 
 	const setRandomMergeData = (imagesData) => {
-		let defaultMergeData = []
-		imagesData.map(({ folderName, data }) => {
-			console.log(data[Math.floor(Math.random() * data.length)])
-			defaultMergeData.push({ folderName, link: data[Math.floor(Math.random() * data.length)].link })
-		})
-		setMergeData(defaultMergeData)
+		let defaultMergeData = mergeData
+		imagesData.map(({ folderName, data }) =>
+			defaultMergeData.push({
+				folderName,
+				link: data[Math.floor(Math.random() * data.length)].link,
+				random: true,
+				data
+			})
+		)
+		setMergeData([...defaultMergeData])
 	}
 
 	useEffect(() => {
 		const imagesData = importAll(require.context('../assets/img/randomise'));
 		setRandomMergeData(imagesData)
 		setImagesData(imagesData)
+		for (let i = 0; i < 8; i++) {
+			merge()
+		}
 	}, [])
 
 	return (
@@ -258,8 +276,9 @@ const GreenHouse = () => {
 												aria-label="Floating label select example"
 												className="form-select"
 												id="floatingSelect"
-												onChange={(e) => pushMergeData({ folderName, link: e.currentTarget.value })}
+												onChange={(e) => pushMergeData({ folderName, link: e.currentTarget.value, data })}
 											>
+												<option value='random'>Random</option>
 												{
 													data.map(({ fileName, link }) => (
 														<option value={link}>{fileName}</option>
