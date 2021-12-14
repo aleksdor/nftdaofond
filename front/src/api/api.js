@@ -38,7 +38,7 @@ class Bia {
 
 	async connectRpc(cb) {
 		this.web3Infura = new Web3(networkParameters.rpc)
-		const { rarinonNFTContract, rarinonAuctionContract, rarinonDAOContract } = await this.getRarinonNFTContract(this.web3Infura)
+		const { rarinonNFTContract, rarinonAuctionContract, rarinonDAOContract } = await this.getNFTContracts(this.web3Infura)
 		this.rarinonDAOContractRpc = rarinonDAOContract
 		this.rarinonNFTContractRpc = rarinonNFTContract
 		this.rarinonAuctionContractRpc = rarinonAuctionContract
@@ -71,14 +71,14 @@ class Bia {
 		return { rarinonNFTContract: res1, rarinonAuctionContract: res3, rarinonDAOContract: res2 }
 	}
 
-	async getRarinonNFTContract(web3) {
-		if (rarinonNFTAddress) {
+	async getNFTContracts(web3) {
+		if (rarinonNFTAddress && rarinonDAOAddress && rarinonAuctionAddress) {
 			const rarinonNFTContract = await new web3.eth.Contract(rarinonNFTAbi, rarinonNFTAddress)
 			const rarinonDAOContract = await new web3.eth.Contract(rarinonDAOAbi, rarinonDAOAddress)
 			const rarinonAuctionContract = await new web3.eth.Contract(rarinonAuctionAbi, rarinonAuctionAddress)
 			return { rarinonNFTContract, rarinonAuctionContract, rarinonDAOContract }
 		} else {
-			return undefined;
+			return {};
 		}
 	}
 
@@ -172,7 +172,7 @@ class Bia {
 							this.canChangeNetwork = true;
 							this.chainLogo = this.getChainLogo(this.chainId);
 							this.networkName = await this.web3.eth.net.getNetworkType();
-							const { rarinonNFTContract, rarinonAuctionContract, rarinonDAOContract } = await this.getRarinonNFTContract(this.web3)
+							const { rarinonNFTContract, rarinonAuctionContract, rarinonDAOContract } = await this.getNFTContracts(this.web3)
 							this.rarinonNFTContract = rarinonNFTContract
 							this.rarinonAuctionContract = rarinonAuctionContract
 							this.rarinonDAOContract = rarinonDAOContract

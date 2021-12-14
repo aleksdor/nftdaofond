@@ -1,6 +1,7 @@
 import React from 'react';
 
-const Vote = () => {
+const Vote = (props) => {
+	console.log(props)
 	return (
 		<div className="section-container">
 			<div className="container-fluid">
@@ -16,18 +17,18 @@ const Vote = () => {
 								<h3 className="proposals-title">
 									Proposals
 								</h3>
-								<button type="button" class="proposals-btn btn btn-success">Create Proposal</button>
+								<button type="button" class="proposals-btn btn btn-success" onClick={() => props.history.push('/create-proposal')}>Create Proposal</button>
 							</div>
-							<button type="button" class="proposals-link btn btn-dark">
+							<button type="button" class="proposals-link btn btn-dark" onClick={() => props.history.push('/test/')}>
 								<span className='link-title'>
 									<span>
 										1.
 									</span>
 									<span></span>
 								</span>
-								<span class="badge bg-primary">Pending</span>
+								<span class="badge bg-primary">Active</span>
 							</button>
-							<button type="button" class="proposals-link btn btn-dark">
+							<button type="button" class="proposals-link btn btn-dark" onClick={() => props.history.push('/test/')}>
 								<span className='link-title'>
 									<span>
 										2.
@@ -36,32 +37,32 @@ const Vote = () => {
 								</span>
 								<span class="badge bg-primary">Active</span>
 							</button>
-							<button type="button" class="proposals-link btn btn-dark">
+							<button type="button" class="proposals-link btn btn-dark" onClick={() => props.history.push('/test/')}>
 								<span className='link-title'>
 									<span>
 										3.
 									</span>
 									<span></span>
 								</span>
-								<span class="badge bg-success">Succeeded</span>
+								<span class="badge bg-primary">Active</span>
 							</button>
-							<button type="button" class="proposals-link btn btn-dark">
+							<button type="button" class="proposals-link btn btn-dark" onClick={() => props.history.push('/test/')}>
 								<span className='link-title'>
 									<span>
 										4.
 									</span>
 									<span></span>
 								</span>
-								<span class="badge bg-danger">Defeated</span>
+								<span class="badge bg-primary">Active</span>
 							</button>
-							<button type="button" class="proposals-link btn btn-dark">
+							<button type="button" class="proposals-link btn btn-dark" onClick={() => props.history.push('/test/')}>
 								<span className='link-title'>
 									<span>
 										5.
 									</span>
 									<span></span>
 								</span>
-								<span class="badge bg-secondary">Queued</span>
+								<span class="badge bg-primary">Active</span>
 							</button>
 						</div>
 					</div>

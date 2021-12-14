@@ -8,8 +8,10 @@ import {
 import Layout from './route/Layout';
 import Main from './views/Main';
 import Vote from './views/Vote';
-import Playground from './views/Playground';
+import GreenHouse from './views/GreenHouse';
 import Dev from './views/Dev';
+import CreateProposal from './views/CreateProposal';
+import Test from './views/Test';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
 
@@ -20,8 +22,10 @@ function App() {
         <Switch>
           <Route exact path="/" component={Main} />
           <Route path="/dev" component={Dev} />
-          <Route path="/Vote" component={Vote} />
-          <Route path="/Playground" component={Playground} />
+          <Route path="/vote" component={Vote} />
+          <Route path="/greenhouse" component={GreenHouse} />
+          <Route path="/create-proposal" component={CreateProposal} />
+          <Route path="/test" component={Test} />
           <Redirect to="/" />
         </Switch>
       </Layout>

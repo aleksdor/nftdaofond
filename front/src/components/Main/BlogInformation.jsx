@@ -101,11 +101,11 @@ const BlogInformation = () => {
                                             Floros.club NFT Tokens are always generated randomly based on the block hashes of the Ethereum network. Having no “if” statements in the code overseeing the minting process makes all of the minted NFTs equally rare. There is currently a range of the NFT Token types generated with several distinctive categories being:
                                         </p>
                                         <p>
-                                            <li>A</li>
-                                            <li>B</li>
-                                            <li>C</li>
-                                            <li>D</li>
-                                            <li>E</li>
+                                            <li>background</li>
+                                            <li>base</li>
+                                            <li>flower</li>
+                                            <li>glasses</li>
+                                            <li>vice</li>
                                         </p>
                                     </div>
                                 </div>
