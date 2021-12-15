@@ -17,7 +17,7 @@ const Test = () => {
 								Proposal
 								1
 							</h3>
-							<span class="badge bg-primary">Active</span>
+							<span className="badge bg-primary">Active</span>
 						</div>
 						<div></div>
 						<div className="data-title">

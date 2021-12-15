@@ -17,9 +17,9 @@ const BlogInformation = () => {
                         <div className="accordion accordion-flush" id="accordionFlushExample">
                             <div className="accordion-item documentation-item">
                                 <h2 className="accordion-header documentation-header" id="flush-headingOne">
-                                    <batton className="accordion-button collapsed documentation-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                    <div className="accordion-button collapsed documentation-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                                         SUMMARY
-                                    </batton>
+                                    </div>
                                 </h2>
                                 <div id="flush-collapseOne" className="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                     <div className="accordion-body">

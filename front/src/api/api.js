@@ -42,6 +42,7 @@ class Bia {
 		this.rarinonDAOContractRpc = rarinonDAOContract
 		this.rarinonNFTContractRpc = rarinonNFTContract
 		this.rarinonAuctionContractRpc = rarinonAuctionContract
+		console.log({ rarinonNFTContract, rarinonAuctionContract, rarinonDAOContract })
 		this.connectedRpc = true;
 		cb()
 	}
@@ -84,6 +85,10 @@ class Bia {
 
 	async getCurrentTokenInfo() {
 		const CurrentID = await this.rarinonNFTContractRpc.methods.CurrentID().call()
+		// const historyCount = await this.rarinonAuctionContractRpc.methods.historyCount().call()
+		// console.log(historyCount)
+		// const history = await this.rarinonAuctionContractRpc.methods.history(Number(historyCount) - 1).call()
+		// console.log(history)
 		const tokenUri = await this.rarinonNFTContractRpc.methods.tokenURI(CurrentID).call()
 		const { data: { image } } = await axios.get(tokenUri)
 		return { tokenImage: image, currentId: CurrentID }
