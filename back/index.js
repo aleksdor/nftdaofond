@@ -52,8 +52,12 @@ let nft, dao, auction
 
 async function start() {
     nft = await instance('./contracts/RarinonNFT.json', ['Name', 'SYMBOL'])
-    dao = await instance('./contracts/RarinonDAO.json', [nft._address, 60 * 60 * 24, 8])
-    auction = await instance('./contracts/RarinonAuction.json', [nft._address, dao._address, 60 * 60 * 24])
+    // 10 minute
+    dao = await instance('./contracts/RarinonDAO.json', [nft._address, 10 * 60, 8])
+    auction = await instance('./contracts/RarinonAuction.json', [nft._address, dao._address, 10 * 60])
+    // 1 day
+    // dao = await instance('./contracts/RarinonDAO.json', [nft._address, 60 * 60 * 24, 8])
+    // auction = await instance('./contracts/RarinonAuction.json', [nft._address, dao._address, 60 * 60 * 24])
 
     loop_auction_worker()
     loop_dao_worker()
