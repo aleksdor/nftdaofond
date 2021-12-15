@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.10;
 
+import "openzeppelin-solidity/contracts/access/Ownable.sol";
+
 // Контракт собирает деньги в фонд и распределяет их голосованием.
 // Голосование проводится главным NFT токеном.
 
@@ -33,7 +35,7 @@ interface IERC721 {
     function burn(uint256 tokenId) external;
 }
 
-contract RarinonAuction {
+contract RarinonAuction is Ownable {
     struct Round{
         uint256 tokenId;
         uint256 end_at;
@@ -43,8 +45,8 @@ contract RarinonAuction {
     }
 
     IERC721 nft;  // Base NFT token for DAO voting.
-    address dao;
-    uint256 round_sec; // Round length in seconds.
+    address public dao;
+    uint256 public round_sec; // Round length in seconds.
 
     Round[] _history;
 
@@ -61,6 +63,14 @@ contract RarinonAuction {
         nft = IERC721(nft_);
         dao = dao_;
         round_sec = round_sec_;
+    }
+
+    function set_round_sec(uint256 round_sec_)  onlyOwner public {
+        round_sec = round_sec_;
+    }
+
+    function set_dao(address dao_) onlyOwner public {
+        dao = dao_;
     }
 
     function createRound(uint256 tokenId) public {

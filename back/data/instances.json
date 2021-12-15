@@ -1,11 +1,11 @@
 {
 	"./contracts/RarinonNFT.json": {
-		"address": "0x6c3A69eF22F4e8A657fB7fb81000fE34899CAAA0"
+		"address": "0xb8d0BAaCD2184D957bB61C3A7f7a3B9CFE099471"
 	},
 	"./contracts/RarinonDAO.json": {
-		"address": "0x662d115a16C040956AD7f4dE9eB1117E0b0F895C"
+		"address": "0xa4244Df8d88D77a5020fAf3f205cf416AEA06b36"
 	},
 	"./contracts/RarinonAuction.json": {
-		"address": "0x574ce33F3aa70f0fb3714e9F600E63Fb102b3283"
+		"address": "0xCea4443E377E9CC0caBC0d65B170Abea1457D16d"
 	}
 }

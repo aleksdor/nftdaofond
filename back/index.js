@@ -52,11 +52,18 @@ let nft, dao, auction
 
 async function start() {
     nft = await instance('./contracts/RarinonNFT.json', ['Name', 'SYMBOL'])
-    dao = await instance('./contracts/RarinonDAO.json', [nft._address, 30, 3])
-    auction = await instance('./contracts/RarinonAuction.json', [nft._address, dao._address, 30])
+    dao = await instance('./contracts/RarinonDAO.json', [nft._address, 60 * 60 * 24, 8])
+    auction = await instance('./contracts/RarinonAuction.json', [nft._address, dao._address, 60 * 60 * 24])
 
-    // loop_auction_worker()
+    loop_auction_worker()
     loop_dao_worker()
+
+    // console.log(auction._address)
+    // await nft.methods.mint(auction._address, 'none uri').send({from: conf.web3_address})
+
+    // let curid = await nft.methods.CurrentID().call()    
+    // let url = await nft.methods.tokenURI(curid).call()    
+    // console.log(curid, url)
 }
 
 start()
@@ -69,19 +76,25 @@ async function loop_auction_worker() {
         let need_create_round = false
 
         let count = await auction.methods.historyCount().call()
+        console.log('loop_auction_worker count', count)
+
         if (count == 0) {
             need_create_round = true;
         }
         else {
             let can = await auction.methods.canClose().call()
             if (can) {
-                console.log('Closing round...')
+                console.log('Can close round. Closing round...')
                 await auction.methods.close().send({ from: conf.web3_address })
                 need_create_round = true;
             }
             else {
+                console.log('Can not close round. Check last round...')
                 let last = await auction.methods.history(count - 1).call()
-                if (last.closed) need_create_round = true
+                if (last.closed){
+                    console.log('Last round closed. Creating new.')
+                    need_create_round = true
+                }
             }
         }
 
@@ -92,15 +105,16 @@ async function loop_auction_worker() {
             await nft.methods.mint(auction._address, token_url).send({ from: conf.web3_address })
             let id = await nft.methods.CurrentID().call()
             await auction.methods.createRound(id).send({ from: conf.web3_address })
+            await auction.methods.createBid().send({ from: conf.web3_address, value: web3.utils.toWei('0.01', 'ether') })
             console.log('Created')
         }
-        console.log(count)
+        
     }
     catch (ex) {
         console.log('loop_auction_worker error', ex)
     }
 
-    setTimeout(loop_auction_worker, 5000);
+    setTimeout(loop_auction_worker, 30000);
 }
 
 
@@ -116,11 +130,12 @@ async function loop_dao_worker() {
 
         // Если можно закрываем.
         let count = await dao.methods.historyCount().call()
+        console.log('loop_dao_worker count', count)
+
         for (let i = proposals.length; i < count; i++){
             let proposal = await dao.methods.history(i).call()
             proposals.push(proposal)
-        }
-        console.log(count)
+        }        
 
         for (let i = 0; i < proposals.length; i++){
             if (!proposals[i].closed){
