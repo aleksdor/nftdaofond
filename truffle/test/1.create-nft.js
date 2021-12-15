@@ -258,6 +258,21 @@ describe('RarinonDAO', () => {
         }
         catch { }                  
     })
+
+    it(`changing round time`, async () => {
+        let time = await dao.round_sec()
+        await dao.set_round_sec(new BN(time).toNumber() + 10)
+        let timeAfter = await dao.round_sec()
+        assert.equal(new BN(timeAfter).sub(new BN(time)).toNumber(), 10) 
+    })
+
+    it(`changing quorum`, async () => {
+        let quorum = await dao.quorum()
+        await dao.set_quorum(new BN(quorum).toNumber() + 10)
+        let quorumAfter = await dao.quorum()
+        assert.equal(new BN(quorumAfter).sub(new BN(quorum)).toNumber(), 10) 
+    })
+        
 })
 
 
@@ -341,5 +356,12 @@ describe('RarinonAuction', () => {
         let owner = await nft.ownerOf(1);        
         assert.equal(owner, WINNER)
     })   
+
+    it(`changing round time`, async () => {
+        let time = await dao.round_sec()
+        await dao.set_round_sec(new BN(time).toNumber() + 10)
+        let timeAfter = await dao.round_sec()
+        assert.equal(new BN(timeAfter).sub(new BN(time)).toNumber(), 10) 
+    })
 
 })

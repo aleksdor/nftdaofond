@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.10;
 
+import "openzeppelin-solidity/contracts/access/Ownable.sol";
+
 // Контракт собирает деньги в фонд и распределяет их голосованием.
 // Голосование проводится главным NFT токеном.
 
@@ -11,10 +13,10 @@ interface IERC721 {
     function balanceOf(address owner) external view returns (uint256 balance);
 }
 
-contract RarinonDAO {
+contract RarinonDAO is Ownable {
     IERC721 _nft;  // Base NFT token for DAO voting.
-    uint256 _round_sec; // ROund length in seconds.
-    uint32 _quorum; // How many votes nedded to accept or reject voting.
+    uint256 public round_sec; // ROund length in seconds.
+    uint32 public quorum; // How many votes nedded to accept or reject voting.
 
     struct Proposal{
         address account;
@@ -39,10 +41,18 @@ contract RarinonDAO {
         return _history[index];
     }
 
-    constructor(address nft, uint256 round_sec, uint32 quorum) {
+    constructor(address nft, uint256 round_sec_, uint32 quorum_) {
         _nft = IERC721(nft);
-        _round_sec = round_sec;
-        _quorum = quorum;
+        round_sec = round_sec_;
+        quorum = quorum_;
+    }
+
+    function set_round_sec(uint256 round_sec_) onlyOwner public {
+        round_sec = round_sec_;
+    }
+
+    function set_quorum(uint32 quorum_) onlyOwner public {
+        quorum = quorum_;
     }
 
     modifier onlyMember() {        
@@ -64,7 +74,7 @@ contract RarinonDAO {
         require(address(this).balance >= amount, "Not sufficient funds");
 
         address[] memory dump;
-        Proposal memory proposal = Proposal(account, amount, title, url, dump, 0, 0, block.timestamp + _round_sec, false, false);
+        Proposal memory proposal = Proposal(account, amount, title, url, dump, 0, 0, block.timestamp + round_sec, false, false);
         _history.push(proposal);
     }
 
@@ -97,7 +107,7 @@ contract RarinonDAO {
         require(vote_id < _history.length);
         Proposal memory proposal = _history[vote_id];
 
-        return !proposal.closed && (proposal.nyes >= _quorum || proposal.nno >= _quorum || block.timestamp >= proposal.end_at);
+        return !proposal.closed && (proposal.nyes >= quorum || proposal.nno >= quorum || block.timestamp >= proposal.end_at);
     }
 
     function close(uint256 vote_id) public {
@@ -109,7 +119,7 @@ contract RarinonDAO {
         proposal.closed = true;
 
         // Quorum agreed proposal. Transfer money.
-        if (proposal.nyes >= _quorum){
+        if (proposal.nyes >= quorum){
             proposal.approved = true;
             payable(proposal.account).transfer(proposal.amount);
         }

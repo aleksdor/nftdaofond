@@ -276,7 +276,11 @@ class TraitSet {
  * @returns 
  */
 function parseTraitImageFilename(filename) {
-	let [value, rate] = filename.slice(0, filename.length - 4).split('-')
+	let name = filename.slice(0, filename.length - 4)
+	let [value, rate] = name.split('-')
+	if (!rate) [value, rate] = name.split('_')
+	if (!rate) rate = 1
+
 	return {
 		value,
 		rate: rate ? parseInt(rate) : 100,
