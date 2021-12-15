@@ -1,8 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
-import main01 from '../../assets/img/main01.png';
 import MiniCard from '../MiniCard';
 import api from '../../api/api'
+import styled from 'styled-components'
+
+const NumberInputWithoutArrows = styled.input`
+	&::-webkit-outer-spin-button,
+	&::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+	}
+	&[type=number] {
+	-moz-appearance: textfield;
+	}
+`
 
 const NounInfo = () => {
 	const [show, setShow] = useState(false);
@@ -10,17 +21,18 @@ const NounInfo = () => {
 	const [currentTokenImage, setCurrentTokenImage] = useState('')
 	const [currentId, setCurrentId] = useState(0)
 	const [bids, setBids] = useState([])
-	const [endsAt, setEndsAt] = useState('')
+	// const [endsAt, setEndsAt] = useState('')
 	const [bidders, setBidders] = useState([])
 	const [hours, setHours] = useState('')
 	const [minutes, setMinutes] = useState('')
 	const [seconds, setSeconds] = useState('')
 	const [minimalBid, setMinimalBid] = useState(0)
+	const [validatedBidInput, setValidatedBidInput] = useState('')
 	const handieClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 
 	const startTimer = (endTimestamp) => {
-		const calc = setInterval(timer, 1000)
+		setInterval(timer, 1000)
 		function timer() {
 			const endAt = new Date(endTimestamp);
 			const currentTime = new Date();
@@ -44,12 +56,12 @@ const NounInfo = () => {
 		api.connectRpc(async () => {
 			const { tokenImage, currentId } = await api.getCurrentTokenInfo()
 			const { history: { bids, end_at, bidders } } = await api.getHistory()
-			const numberBidsArr = bids.map((bid) => Number(bid) / 1000000000000000000)
+			const numberBidsArr = bids.length ? bids.map((bid) => Number(bid) / 1000000000000000000) : [0]
 			const minimalBidded = Math.max.apply(Math, numberBidsArr)
-			const minimalBid = minimalBidded / 100 * 50 + minimalBidded
+			const minimalBid = minimalBidded ? minimalBidded / 100 * 50 + minimalBidded : 0.01
 			setMinimalBid(minimalBid)
 			startTimer(Number(end_at))
-			setEndsAt(end_at)
+			// setEndsAt(end_at)
 			setBids(bids)
 			setBidders(bidders)
 			setCurrentId(currentId)
@@ -68,18 +80,24 @@ const NounInfo = () => {
 		setBidders(bidders)
 	}
 
+	const validateAndSetBid = (value) => {
+		const validated = value.replace(/[^\d.,]/g, "").replace(',', '.')
+		setBid(Number(validated) * 1000000000000000000)
+		setValidatedBidInput(validated)
+	}
+
 	return (
 		<>
 			<Modal show={show} onHide={handieClose} >
 				<Modal.Header className="modal-header">
 					<div className="header-wrapper">
-						<a className="click-noun" href="#">
+						<a className="click-noun" href="/">
 							<div className="img-wrapper">
 								<img src={currentTokenImage} alt="" className="img-wtf" />
 							</div>
 						</a>
 					</div>
-					<Modal.Title h4 className="auction">
+					<Modal.Title h4="true" className="auction">
 						<h1 className="modal-descr">
 							Floro
 							{currentId}
@@ -87,7 +105,7 @@ const NounInfo = () => {
 							Bid History
 						</h1>
 					</Modal.Title>
-					<button type="button" class="btn-close close" aria-label="Close" onClick={handieClose}></button>
+					<button type="button" className="btn-close close" aria-label="Close" onClick={handieClose}></button>
 				</Modal.Header>
 				<Modal.Body>
 					<MiniCard bidders={bidders} bids={bids} />
@@ -115,8 +133,8 @@ const NounInfo = () => {
 												<span className="name">Floro {currentId}</span>
 											</div>
 											{/* <div className="auction-navigation">
-												<button type="button" class="auction-navigation-left">←</button>
-												<button type="button" class="auction-navigation-right">→</button>
+												<button type="button" className="auction-navigation-left">←</button>
+												<button type="button" className="auction-navigation-right">→</button>
 											</div> */}
 										</div>
 									</div>
@@ -126,7 +144,7 @@ const NounInfo = () => {
 												<h4 className="carrent-title">Current bid</h4>
 												<h2 className="carrent-descr">
 													Ξ
-													{Number(bids[bids.length - 1]) / 1000000000000000000}
+													{bids.length ? Number(bids[bids.length - 1]) / 1000000000000000000 : 0}
 												</h2>
 											</div>
 										</div>
@@ -158,9 +176,15 @@ const NounInfo = () => {
 										<div className="col-lg-12">
 											<span className="mini-bid">Minimum bid: {minimalBid} ETH</span>
 											<div className="input-group">
-												<input onChange={(e) => setBid(Number(e.target.value) * 1000000000000000000)} class=" group form-control" type="text" aria-label="default input example"></input>
+												<NumberInputWithoutArrows
+													onChange={(e) => validateAndSetBid(e.target.value)}
+													className="group form-control"
+													type="text"
+													aria-label="default input example"
+													value={validatedBidInput}
+												/>
 												<span className="group-title">ETH</span>
-												<button onClick={() => createBid(bid)} disabled={bid >= minimalBid * 1000000000000000000 ? false : true} type="button" class="button-main btn btn-primary">Bid</button>
+												<button onClick={() => createBid(bid)} disabled={bid >= minimalBid * 1000000000000000000 ? false : true} type="button" className="button-main btn btn-primary">Bid</button>
 											</div>
 										</div>
 									</div>
@@ -195,15 +219,15 @@ const NounInfo = () => {
 																</div>
 																{/* <div className="history-sale">
 																	<a href="/" target="_blank" rel="noreferrer">
-																		<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="external-link-alt" class="svg-inline--fa fa-external-link-alt fa-w-16 " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+																		<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="external-link-alt" className="svg-inline--fa fa-external-link-alt fa-w-16 " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
 																			<path fill="currentColor" d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z">
 																			</path>
 																		</svg>
 																	</a>
 																</div> */}
-																<div className="history-link">
+																{/* <div className="history-link">
 																	<a href="https://etherscan.io/tx/0x9fbca796f87b09f7e26224393611afd27d2a11dab6858b50ba40fab2d34751ff" target="_blank" rel="noreferrer"></a>
-																</div>
+																</div> */}
 															</div>
 														</div>
 													</li>

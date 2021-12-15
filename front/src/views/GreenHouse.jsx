@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 import styled from 'styled-components'
 import mergeImages from 'merge-images'
@@ -17,14 +17,8 @@ const GreenhouseHeaderRow = styled.div`
 	h1 {
 		font-family: "Fuzzy Bubbles";
 		font-weight: 700;
-		color: #14161b;cy
+		color: #14161b;
 		font-size: 56px;
-	}
-`
-const LinkLink = styled.a`
-	color: #d63c5e;
-	&:hover {
-		color: #d63c5e;
 	}
 `
 const GreenhouseGenerateBtn = styled(Button)`
@@ -82,10 +76,6 @@ const GreenhouseTraitFormBtn = styled.select`
 		border-color: #e2e3e8!important;
 		background-color: #f4f4f8!important;
 	}
-`
-const GreenhouseNounYearsFooter = styled.p`
-	font-style: italic;
-	padding-top: 1rem;
 `
 const NounImgWrapper = styled.div`
 	margin-bottom: 1rem;
@@ -186,7 +176,7 @@ const GreenHouse = () => {
 	const [showModal, setShowModal] = useState(false)
 	const [modalImage, setModalImage] = useState('')
 	const [imagesData, setImagesData] = useState([])
-	const [background, setBackground] = useState('')
+	// const [background, setBackground] = useState('')
 	const [nouns, setNouns] = useState([])
 	const [mergeData, setMergeData] = useState([])
 	const showModalWindow = (image) => {
@@ -244,6 +234,7 @@ const GreenHouse = () => {
 		for (let i = 0; i < 8; i++) {
 			merge()
 		}
+		// eslint-disable-next-line
 	}, [])
 
 	return (

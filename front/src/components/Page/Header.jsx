@@ -25,7 +25,7 @@ const Header = () => {
 	}, [])
 
 	return (
-		<nav class="navbar navbar-expand-lg navbar-light navbar-bg">
+		<nav className="navbar navbar-expand-lg navbar-light navbar-bg">
 			<div className="container-lg">
 				<a className="navbarbrand navbar-brand" href="/">
 					<img src={imgheader04} alt="" className="icon-header" />

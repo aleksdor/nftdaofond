@@ -17,52 +17,52 @@ const Vote = (props) => {
 								<h3 className="proposals-title">
 									Proposals
 								</h3>
-								<button type="button" class="proposals-btn btn btn-success" onClick={() => props.history.push('/create-proposal')}>Create Proposal</button>
+								<button type="button" className="proposals-btn btn btn-success" onClick={() => props.history.push('/create-proposal')}>Create Proposal</button>
 							</div>
-							<button type="button" class="proposals-link btn btn-dark" onClick={() => props.history.push('/test/')}>
+							<button type="button" className="proposals-link btn btn-dark" onClick={() => props.history.push('/test/')}>
 								<span className='link-title'>
 									<span>
 										1.
 									</span>
 									<span></span>
 								</span>
-								<span class="badge bg-primary">Active</span>
+								<span className="badge bg-primary">Active</span>
 							</button>
-							<button type="button" class="proposals-link btn btn-dark" onClick={() => props.history.push('/test/')}>
+							<button type="button" className="proposals-link btn btn-dark" onClick={() => props.history.push('/test/')}>
 								<span className='link-title'>
 									<span>
 										2.
 									</span>
 									<span></span>
 								</span>
-								<span class="badge bg-primary">Active</span>
+								<span className="badge bg-primary">Active</span>
 							</button>
-							<button type="button" class="proposals-link btn btn-dark" onClick={() => props.history.push('/test/')}>
+							<button type="button" className="proposals-link btn btn-dark" onClick={() => props.history.push('/test/')}>
 								<span className='link-title'>
 									<span>
 										3.
 									</span>
 									<span></span>
 								</span>
-								<span class="badge bg-primary">Active</span>
+								<span className="badge bg-primary">Active</span>
 							</button>
-							<button type="button" class="proposals-link btn btn-dark" onClick={() => props.history.push('/test/')}>
+							<button type="button" className="proposals-link btn btn-dark" onClick={() => props.history.push('/test/')}>
 								<span className='link-title'>
 									<span>
 										4.
 									</span>
 									<span></span>
 								</span>
-								<span class="badge bg-primary">Active</span>
+								<span className="badge bg-primary">Active</span>
 							</button>
-							<button type="button" class="proposals-link btn btn-dark" onClick={() => props.history.push('/test/')}>
+							<button type="button" className="proposals-link btn btn-dark" onClick={() => props.history.push('/test/')}>
 								<span className='link-title'>
 									<span>
 										5.
 									</span>
 									<span></span>
 								</span>
-								<span class="badge bg-primary">Active</span>
+								<span className="badge bg-primary">Active</span>
 							</button>
 						</div>
 					</div>

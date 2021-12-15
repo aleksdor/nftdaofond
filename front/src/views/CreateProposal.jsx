@@ -19,23 +19,23 @@ const CreateProposal = () => {
 						<div className="d-flex flex-column input-group">
 							<form id="contact" action="" method="post">
 								<fieldset>
-									<div className="form-title">Цель:</div>
+									<div className="form-title">Target:</div>
 									<input type="text" tabindex="1" autofocus></input>
 								</fieldset>
 								<fieldset>
-									<div className="form-title">Получатель:</div>
+									<div className="form-title">Recipient:</div>
 									<input type="text" tabindex="2"></input>
 								</fieldset>
 								<fieldset>
-									<div className="form-title">Сумма:</div>
+									<div className="form-title">Amount:</div>
 									<input type="text" tabindex="3"></input>
 								</fieldset>
 								<fieldset>
-									<div className="form-title">Подробнее (url):</div>
+									<div className="form-title">More details(url):</div>
 									<input type="url" tabindex="4"></input>
 								</fieldset>
 								<fieldset>
-									<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Создать</button>
+									<button name="сreate" type="сreate" id="contact-submit" data-submit="...Sending">Create</button>
 								</fieldset>
 							</form>
 						</div>
