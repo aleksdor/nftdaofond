@@ -2,49 +2,40 @@ import React, { useState, useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
 import MiniCard from '../MiniCard';
 import api from '../../api/api'
-import styled from 'styled-components'
-
-const NumberInputWithoutArrows = styled.input`
-	&::-webkit-outer-spin-button,
-	&::-webkit-inner-spin-button {
-	-webkit-appearance: none;
-	margin: 0;
-	}
-	&[type=number] {
-	-moz-appearance: textfield;
-	}
-`
 
 const NounInfo = () => {
 	const [show, setShow] = useState(false);
 	const [bid, setBid] = useState(0);
 	const [currentTokenImage, setCurrentTokenImage] = useState('')
-	const [currentId, setCurrentId] = useState(0)
+	const [currentTokenId, setCurrentId] = useState(0)
 	const [bids, setBids] = useState([])
-	// const [endsAt, setEndsAt] = useState('')
 	const [bidders, setBidders] = useState([])
 	const [hours, setHours] = useState('')
 	const [minutes, setMinutes] = useState('')
 	const [seconds, setSeconds] = useState('')
 	const [minimalBid, setMinimalBid] = useState(0)
 	const [validatedBidInput, setValidatedBidInput] = useState('')
+	const [currentHistoryId, setCurrentHistoryId] = useState(0)
+	const [bidDisabled, setBidDisabled] = useState(false)
 	const handieClose = () => setShow(false);
 	const handleShow = () => setShow(true);
+	const [calc, setCalc] = useState('')
 
 	const startTimer = (endTimestamp) => {
-		setInterval(timer, 1000)
+		const calc = setInterval(timer, 1000)
+		setCalc(calc)
 		function timer() {
-			const endAt = new Date(endTimestamp);
-			const currentTime = new Date();
+			const endAt = new Date(endTimestamp * 1000).getTime();
+			const currentTime = new Date().getTime();
 
-			const totalSeconds = Math.floor((endAt - (currentTime)) / 1000)
-			const totalMinutes = Math.floor(totalSeconds / 60)
-			const totalHours = Math.floor(totalMinutes / 60)
-			const totalDays = Math.floor(totalHours / 24)
-
-			const hours = totalHours - (totalDays * 24);
-			const minutes = totalMinutes - (totalDays * 24 * 60) - (hours * 60);
-			const seconds = totalSeconds - (totalDays * 24 * 60 * 60) - (hours * 60 * 60) - (minutes * 60);
+			let delta = Math.abs(endAt - currentTime) / 1000;
+			const days = Math.floor(delta / 86400);
+			delta -= days * 86400;
+			const hours = Math.floor(delta / 3600) % 24;
+			delta -= hours * 3600;
+			const minutes = Math.floor(delta / 60) % 60;
+			delta -= minutes * 60;
+			const seconds = Math.floor(delta % 60);
 
 			setHours(hours.toString())
 			setMinutes(minutes.toString())
@@ -54,30 +45,56 @@ const NounInfo = () => {
 
 	useEffect(() => {
 		api.connectRpc(async () => {
-			const { tokenImage, currentId } = await api.getCurrentTokenInfo()
-			const { history: { bids, end_at, bidders } } = await api.getHistory()
+			const { tokenImage, currentTokenId } = await api.getCurrentTokenInfo()
+			const { currentHistoryId } = await api.getCurrentHistoryId()
+			const { history: { bids, end_at, bidders } } = await api.getHistory(currentHistoryId)
 			const numberBidsArr = bids.length ? bids.map((bid) => Number(bid) / 1000000000000000000) : [0]
 			const minimalBidded = Math.max.apply(Math, numberBidsArr)
 			const minimalBid = minimalBidded ? minimalBidded / 100 * 50 + minimalBidded : 0.01
+			setCurrentHistoryId(currentHistoryId)
 			setMinimalBid(minimalBid)
 			startTimer(Number(end_at))
-			// setEndsAt(end_at)
 			setBids(bids)
 			setBidders(bidders)
-			setCurrentId(currentId)
+			setCurrentId(currentTokenId)
 			setCurrentTokenImage(tokenImage)
 		})
 	}, [])
 
 	const createBid = async (bid) => {
 		await api.createBid(bid)
-		const { history: { bids, bidders } } = await api.getHistory()
+		const { history: { bids, bidders } } = await api.getHistory(currentHistoryId)
 		const numberBidsArr = bids.map((bid) => Number(bid) / 1000000000000000000)
 		const minimalBidded = Math.max.apply(Math, numberBidsArr)
 		const minimalBid = minimalBidded / 100 * 50 + minimalBidded
 		setMinimalBid(minimalBid)
 		setBids(bids)
 		setBidders(bidders)
+	}
+
+	const changeHistoryPage = async (historyId) => {
+		const { historyCount } = await api.getHistoryCount()
+		if (historyId < 0) historyId = historyCount - 1
+		if (historyId >= historyCount) historyId = 0
+		setCurrentHistoryId(historyId)
+		const { tokenImage, currentTokenId } = await api.getTokenInfo(historyId)
+		let { history: { bids, end_at, bidders } } = await api.getHistory(historyId)
+		const numberBidsArr = bids.length ? bids.map((bid) => Number(bid) / 1000000000000000000) : [0]
+		const minimalBidded = Math.max.apply(Math, numberBidsArr)
+		const minimalBid = minimalBidded ? minimalBidded / 100 * 50 + minimalBidded : 0.01
+		if (historyId !== historyCount - 1) {
+			setBidDisabled(true)
+			clearInterval(calc)
+			setHours(0)
+			setMinutes(0)
+			setSeconds(0)
+		}
+		else startTimer(Number(end_at))
+		setMinimalBid(minimalBid)
+		setBids(bids)
+		setBidders(bidders)
+		setCurrentId(currentTokenId)
+		setCurrentTokenImage(tokenImage)
 	}
 
 	const validateAndSetBid = (value) => {
@@ -100,7 +117,7 @@ const NounInfo = () => {
 					<Modal.Title h4="true" className="auction">
 						<h1 className="modal-descr">
 							Floro
-							{currentId}
+							{currentTokenId}
 							<br />
 							Bid History
 						</h1>
@@ -130,12 +147,12 @@ const NounInfo = () => {
 										</div>
 										<div className="auction-title col-lg-12">
 											<div className="auction-descr">
-												<span className="name">Floro {currentId}</span>
+												<span className="name">Floro {currentTokenId}</span>
 											</div>
-											{/* <div className="auction-navigation">
-												<button type="button" className="auction-navigation-left">←</button>
-												<button type="button" className="auction-navigation-right">→</button>
-											</div> */}
+											<div className="auction-navigation">
+												<button type="button" className="auction-navigation-left" onClick={() => changeHistoryPage(currentHistoryId - 1)}>←</button>
+												<button type="button" className="auction-navigation-right" onClick={() => changeHistoryPage(currentHistoryId + 1)}>→</button>
+											</div>
 										</div>
 									</div>
 									<div className="auction-activity row">
@@ -153,19 +170,19 @@ const NounInfo = () => {
 											<h2 className="timer-descr">
 												<div id="timer" className="section-timer">
 													<span id="hours">
-														{hours}
+														{hours ? hours : '0'}
 														<span className="hours">h</span>
 													</span>
 												</div>
 												<div className="section-timer">
 													<span id="minutes">
-														{minutes}
+														{minutes ? minutes : '0'}
 														<span className="minutes">m</span>
 													</span>
 												</div>
 												<div className="section-timer">
 													<span id="seconds">
-														{seconds}
+														{seconds ? seconds : '0'}
 														<span className="seconds">s</span>
 													</span>
 												</div>
@@ -176,22 +193,29 @@ const NounInfo = () => {
 										<div className="col-lg-12">
 											<span className="mini-bid">Minimum bid: {minimalBid} ETH</span>
 											<div className="input-group">
-												<NumberInputWithoutArrows
+												<input
 													onChange={(e) => validateAndSetBid(e.target.value)}
 													className="group form-control"
 													type="text"
 													aria-label="default input example"
 													value={validatedBidInput}
+													disabled={bidDisabled}
 												/>
 												<span className="group-title">ETH</span>
-												<button onClick={() => createBid(bid)} disabled={bid >= minimalBid * 1000000000000000000 ? false : true} type="button" className="button-main btn btn-primary">Bid</button>
+												<button
+													onClick={() => createBid(bid)}
+													disabled={bid >= minimalBid * 1000000000000000000 && !bidDisabled ? false : true}
+													type="button"
+													className="button-main btn btn-primary"
+												>
+													Bid</button>
 											</div>
 										</div>
 									</div>
 									<div className="auction-activity row">
 										<div className="col=lg-12">
 											{bidders.map((bidder, index) => (
-												<ul className="history-links">
+												<ul className="history-links" key={`bidder-${index}`}>
 													<li className="history-bid">
 														<div className="history-item">
 															<div className='bid-history-left'>
