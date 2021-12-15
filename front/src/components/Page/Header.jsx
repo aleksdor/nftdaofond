@@ -19,7 +19,7 @@ const Header = () => {
 		api.connectRpc(async () => {
 			const { history: { bids } } = await api.getHistory()
 			const reducer = (previousValue, currentValue) => Number(previousValue) + Number(currentValue)
-			const balance = bids.reduce(reducer) / 1000000000000000000
+			const balance = bids.length ? bids.reduce(reducer) / 1000000000000000000 : 0
 			setBalance(balance)
 		})
 	}, [])
@@ -35,7 +35,7 @@ const Header = () => {
 						<span className="route ">TREASURY Ξ {balance}</span>
 						<NavLink to={'/'} className="route ">MAIN</NavLink>
 						<NavLink to={'/vote'} className="route ">VOTE</NavLink>
-						<NavLink to={'/playground'} className="route ">PLAYGROUND</NavLink>
+						<NavLink to={'/greenhouse'} className="route ">GREENHOUSE</NavLink>
 						<span className="route " onClick={connect}>{connected ? api.spliceAddress(address) : 'CONNECT WALLET'}</span>
 					</div>
 				</div>
