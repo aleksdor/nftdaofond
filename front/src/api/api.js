@@ -39,6 +39,7 @@ class Bia {
 	async connectRpc(cb) {
 		this.web3Infura = new Web3(networkParameters.rpc)
 		const { rarinonNFTContract, rarinonAuctionContract, rarinonDAOContract } = await this.getNFTContracts(this.web3Infura)
+		console.log({ rarinonNFTContract, rarinonAuctionContract, rarinonDAOContract })
 		this.rarinonDAOContractRpc = rarinonDAOContract
 		this.rarinonNFTContractRpc = rarinonNFTContract
 		this.rarinonAuctionContractRpc = rarinonAuctionContract
@@ -111,6 +112,34 @@ class Bia {
 			const res = await this.rarinonAuctionContract.methods.close().send({ from: this.accountAddress })
 			console.log(res)
 		}
+	}
+
+	async addProposal(account, amount, title, url) {
+		const amountInWei = this.web3.utils.toWei(String(amount))
+		console.log({ account, amountInWei, title, url })
+		const res = await this.rarinonDAOContract.methods.addProposal(account, amountInWei, title, url).send({ from: this.accountAddress })
+		console.log(res)
+	}
+
+	async getProposals() {
+		const historyCount = await this.rarinonDAOContractRpc.methods.historyCount().call()
+		let requests = []
+		for (let i = 0; i < Number(historyCount); i++) {
+			requests.push(this.rarinonDAOContractRpc.methods.history(i).call())
+		}
+		const proposals = (await Promise.all(requests)).map((proposal, index) => ({ id: index, ...proposal })).reverse()
+		return proposals
+	}
+
+	async getProposal(id) {
+		const proposal = ({ id, ...await this.rarinonDAOContractRpc.methods.history(id).call() })
+		return proposal
+	}
+
+	async isNftOwner() {
+		console.log(this.accountAddress)
+		const nfts = await this.rarinonNFTContract.methods.balanceOf(this.accountAddress).call()
+		console.log(nfts)
 	}
 
 	async getHistoryCount() {

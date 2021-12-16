@@ -88,8 +88,10 @@ const NounInfo = () => {
 			setHours(0)
 			setMinutes(0)
 			setSeconds(0)
+		} else {
+			startTimer(Number(end_at))
+			setBidDisabled(false)
 		}
-		else startTimer(Number(end_at))
 		setMinimalBid(minimalBid)
 		setBids(bids)
 		setBidders(bidders)

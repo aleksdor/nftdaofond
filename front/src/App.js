@@ -7,11 +7,11 @@ import {
 } from 'react-router-dom';
 import Layout from './route/Layout';
 import Main from './views/Main';
-import Vote from './views/Vote';
+import Proposals from './views/Proposals';
 import GreenHouse from './views/GreenHouse';
 import Dev from './views/Dev';
 import CreateProposal from './views/CreateProposal';
-import Test from './views/Test';
+import Vote from './views/Vote';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
 
@@ -22,10 +22,10 @@ function App() {
         <Switch>
           <Route exact path="/" component={Main} />
           <Route path="/dev" component={Dev} />
-          <Route path="/vote" component={Vote} />
+          <Route path="/votes" component={Proposals} />
           <Route path="/greenhouse" component={GreenHouse} />
           <Route path="/create-proposal" component={CreateProposal} />
-          <Route path="/test" component={Test} />
+          <Route path="/vote/:id" component={Vote} />
           <Redirect to="/" />
         </Switch>
       </Layout>
