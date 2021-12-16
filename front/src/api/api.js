@@ -42,7 +42,6 @@ class Bia {
 		this.rarinonDAOContractRpc = rarinonDAOContract
 		this.rarinonNFTContractRpc = rarinonNFTContract
 		this.rarinonAuctionContractRpc = rarinonAuctionContract
-		console.log({ rarinonNFTContract, rarinonAuctionContract, rarinonDAOContract })
 		this.connectedRpc = true;
 		cb()
 	}
@@ -86,17 +85,22 @@ class Bia {
 	async getCurrentTokenInfo() {
 		const CurrentID = await this.rarinonNFTContractRpc.methods.CurrentID().call()
 		// const historyCount = await this.rarinonAuctionContractRpc.methods.historyCount().call()
-		// console.log(historyCount)
 		// const history = await this.rarinonAuctionContractRpc.methods.history(Number(historyCount) - 1).call()
-		// console.log(history)
 		const tokenUri = await this.rarinonNFTContractRpc.methods.tokenURI(CurrentID).call()
 		const { data: { image } } = await axios.get(tokenUri)
-		return { tokenImage: image, currentId: CurrentID }
+		return { tokenImage: image, currentTokenId: CurrentID }
+	}
+
+	async getTokenInfo(id) {
+		const history = await this.rarinonAuctionContractRpc.methods.history(Number(id)).call()
+		const { tokenId } = history
+		const tokenUri = await this.rarinonNFTContractRpc.methods.tokenURI(tokenId).call()
+		const { data: { image } } = await axios.get(tokenUri)
+		return { tokenImage: image, currentTokenId: tokenId }
 	}
 
 	async getBalance() {
 		const balance = await this.web3Infura.eth.getBalance(rarinonDAOAddress)
-		console.log(balance / 1000000000000000000)
 		return balance / 1000000000000000000
 	}
 
@@ -109,10 +113,18 @@ class Bia {
 		}
 	}
 
-	async getHistory() {
-		// const allHistory = await this.rarinonAuctionContract.methods.historyCount().call()
-		// console.log(allHistory)
-		const history = await this.rarinonAuctionContractRpc.methods.history(this.CurrentID).call()
+	async getHistoryCount() {
+		const historyCount = await this.rarinonAuctionContractRpc.methods.historyCount().call()
+		return { historyCount }
+	}
+
+	async getCurrentHistoryId() {
+		const currentHistoryId = await this.rarinonAuctionContractRpc.methods.historyCount().call()
+		return { currentHistoryId: Number(currentHistoryId) - 1 }
+	}
+
+	async getHistory(historyId) {
+		const history = await this.rarinonAuctionContractRpc.methods.history(historyId).call()
 		return { history }
 	}
 

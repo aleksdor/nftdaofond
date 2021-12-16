@@ -17,9 +17,7 @@ const Header = () => {
 
 	useEffect(() => {
 		api.connectRpc(async () => {
-			const { history: { bids } } = await api.getHistory()
-			const reducer = (previousValue, currentValue) => Number(previousValue) + Number(currentValue)
-			const balance = bids.length ? bids.reduce(reducer) / 1000000000000000000 : 0
+			const balance = await api.getBalance()
 			setBalance(balance)
 		})
 	}, [])
