@@ -15,7 +15,7 @@ interface IERC721 {
 
 contract RarinonDAO is Ownable {
     IERC721 _nft;  // Base NFT token for DAO voting.
-    uint256 public round_sec; // ROund length in seconds.
+    uint256 public round_sec; // Round length in seconds.
     uint32 public quorum; // How many votes nedded to accept or reject voting.
 
     struct Proposal{
