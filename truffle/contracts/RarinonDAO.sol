@@ -15,20 +15,20 @@ interface IERC721 {
 
 contract RarinonDAO is Ownable {
     IERC721 _nft;  // Base NFT token for DAO voting.
-    uint256 public round_sec; // ROund length in seconds.
+    uint256 public round_sec; // Round length in seconds.
     uint32 public quorum; // How many votes nedded to accept or reject voting.
 
     struct Proposal{
-        address account;
-        uint256 amount;
-        string title;
-        string url;
-        address[] voters;
-        uint32 nyes;
-        uint32 nno;
-        uint256 end_at;
-        bool closed;
-        bool approved;
+        address account; // Адрес получателя
+        uint256 amount; // Сумма к получению
+        string title; // Название запроса (подайте на поправку здоровья)
+        string url; // URL ресурса с доп информацией (http://тут-красивая-html-страница-попрошайки)
+        address[] voters; // Адреса голосователей
+        uint32 nyes; // Сколько голосов за
+        uint32 nno; // Сколько голосов против
+        uint256 end_at; // Когда закончится голосование
+        bool closed; // Голосование закрыто
+        bool approved; // Голосование принято (деньжульки отправлены попрошайке)
     }
 
     Proposal[] _history;
