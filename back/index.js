@@ -62,8 +62,8 @@ async function start() {
     let bal = await nft.methods.balanceOf(nft._address).call()
     console.log(bal)
 
-    // loop_auction_worker()
-    // loop_dao_worker()
+    loop_auction_worker()
+    loop_dao_worker()
 
     // console.log(auction._address)
     // await nft.methods.mint(auction._address, 'none uri').send({from: conf.web3_address})
