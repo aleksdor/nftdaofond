@@ -24,3 +24,52 @@
     }
   }
 }
+
+// Weezi лог
+.weezi-logo {
+  height: 16px;
+}
+.anim-word {
+  animation-timing-function: ease-out;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  transition: all 0.5s;
+  opacity: 0;
+}
+.w2 {
+  transform: translateX(-17px) rotate(-90deg);
+}
+.w3 {
+  transform: translateX(-30px);
+}
+.w4 {
+  transform: translateX(-45px);
+}
+.w5 {
+  transform: translateX(-60px);
+}
+.weezi-logo:hover g > .w2 {
+  opacity: 1;
+  transform: translateX(0) rotate(0deg);
+}
+.weezi-logo:hover g > .w3 {
+  transition-delay: 150ms;
+  opacity: 1;
+  transform: translateX(0);
+}
+.weezi-logo:hover g > .w4 {
+  transition-delay: 250ms;
+  opacity: 1;
+  transform: translateX(0);
+}
+.weezi-logo:hover g > .w5 {
+  transition-delay: 350ms;
+  opacity: 1;
+  transform: translateX(0);
+}
+.logo-weezi {
+  font-family: "Rajdhani";
+  font-weight: 700;
+  padding-right: 5px;
+
+}
