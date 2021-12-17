@@ -59,6 +59,9 @@ async function start() {
     // dao = await instance('./contracts/RarinonDAO.json', [nft._address, 60 * 60 * 24, 8])
     // auction = await instance('./contracts/RarinonAuction.json', [nft._address, dao._address, 60 * 60 * 24])
 
+    let bal = await nft.methods.balanceOf(nft._address).call()
+    console.log(bal)
+
     loop_auction_worker()
     loop_dao_worker()
 
