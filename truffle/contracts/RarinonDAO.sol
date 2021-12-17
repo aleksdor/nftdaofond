@@ -97,7 +97,7 @@ contract RarinonDAO is Ownable {
         Proposal storage proposal = _history[vote_id];
         require(!proposal.closed, "Already closed");
 
-        proposal.nyes = proposal.nno + 1;
+        proposal.nno = proposal.nno + 1;
         proposal.voters.push(msg.sender);
 
         if (canClose(vote_id)) close(vote_id);
