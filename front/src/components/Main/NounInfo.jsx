@@ -22,24 +22,39 @@ const NounInfo = () => {
 	const [calc, setCalc] = useState('')
 
 	const startTimer = (endTimestamp) => {
-		const calc = setInterval(timer, 1000)
-		setCalc(calc)
+		let web3 = {}
+		let difference = 0
+		api.connectRpc(() => {
+			web3 = api.web3Infura
+			web3.eth.getBlockNumber().then(async (blockNumber) => {
+				const { timestamp } = await web3.eth.getBlock(blockNumber)
+				const currentTime = new Date().getTime()
+				difference = currentTime - timestamp * 1000
+				const calc = setInterval(timer, 1000)
+				setCalc(calc)
+			})
+		})
 		function timer() {
 			const endAt = new Date(endTimestamp * 1000).getTime();
-			const currentTime = new Date().getTime();
-
-			let delta = Math.abs(endAt - currentTime) / 1000;
-			const days = Math.floor(delta / 86400);
-			delta -= days * 86400;
-			const hours = Math.floor(delta / 3600) % 24;
-			delta -= hours * 3600;
-			const minutes = Math.floor(delta / 60) % 60;
-			delta -= minutes * 60;
-			const seconds = Math.floor(delta % 60);
-
-			setHours(hours.toString())
-			setMinutes(minutes.toString())
-			setSeconds(seconds.toString())
+			const currentTime = (new Date().getTime()) - difference;
+			if (endAt - currentTime <= 0) {
+				setHours('0')
+				setMinutes('0')
+				setSeconds('0')
+				setBidDisabled(true)
+			} else {
+				let delta = Math.abs(endAt - currentTime) / 1000;
+				const days = Math.floor(delta / 86400);
+				delta -= days * 86400;
+				const hours = Math.floor(delta / 3600) % 24;
+				delta -= hours * 3600;
+				const minutes = Math.floor(delta / 60) % 60;
+				delta -= minutes * 60;
+				const seconds = Math.floor(delta % 60);
+				setHours(hours.toString())
+				setMinutes(minutes.toString())
+				setSeconds(seconds.toString())
+			}
 		}
 	}
 

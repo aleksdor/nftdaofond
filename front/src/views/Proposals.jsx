@@ -8,7 +8,6 @@ const Vote = (props) => {
 	useEffect(() => {
 		api.connectRpc(async () => {
 			const proposals = await api.getProposals()
-			console.log(proposals)
 			setProposals(proposals)
 		})
 	}, [])
@@ -31,12 +30,12 @@ const Vote = (props) => {
 								<button type="button" className="proposals-btn btn btn-success" onClick={() => props.history.push('/create-proposal')}>Create Proposal</button>
 							</div>
 							{
-								proposals.map(({ title, closed, approved, id, end_at }) => (
+								proposals.map(({ title, closed, approved, id, end_at, nyes, nno, account, amount }) => (
 									<button
 										key={id}
 										type="button"
 										className="proposals-link btn btn-dark"
-										onClick={() => props.history.push({ pathname: `/vote/${id}`, state: { id, closed, approved, title, end_at } })}
+										onClick={() => props.history.push({ pathname: `/vote/${id}`, state: { id, closed, approved, title, end_at, nyes, nno, account, amount } })}
 									>
 										<span className='link-title'>
 											<span>
