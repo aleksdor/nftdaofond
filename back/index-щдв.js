@@ -32,7 +32,7 @@ async function star222() {
     console.log('sentTx', sentTx)
 
     function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
+        return new Promise(resolve => setTimeout(resolve, ms)); 
     }
 
     let hash = '0x02a2a4b42e1278c7d1a2b50fcde53bf51957f4a16954ff03dc8bdd9198c97a27'
