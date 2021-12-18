@@ -112,7 +112,7 @@ async function loop_auction_worker() {
             await nft.methods.mint(auction._address, token_url).send({ from: conf.web3_address })
             let id = await nft.methods.CurrentID().call()
             await auction.methods.createRound(id).send({ from: conf.web3_address })
-            await auction.methods.createBid().send({ from: conf.web3_address, value: web3.utils.toWei('0.01', 'ether') })
+            await auction.methods.createBid().send({ from: conf.web3_address, value: web3.utils.toWei('0.000001', 'ether') })
             console.log('Created')
         }
         
