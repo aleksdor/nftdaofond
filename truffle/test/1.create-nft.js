@@ -101,7 +101,7 @@ describe('RarinonNFT', () => {
             await nft.burn(2, { from: address[2] })
             throw 'Anyone can emit tokens.'
         }
-        catch { }
+        catch { } 
     })
 
     it('A1 burned own token', async () => {
