@@ -20,7 +20,7 @@ class TraitSet {
 	 * @param {*} traits 
 	 */
 	static clean_traits(traits) {
-		return traits.map(x => ({ type: x.type, value: x.value }))
+		return traits.map(x => ({ type: x.type, value: x.value })) 
 	}
 
 	/**
