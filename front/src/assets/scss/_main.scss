@@ -144,6 +144,9 @@
         font-weight: 700;
         background-color: #A29F9E;
         border: none;
+        &:focus {
+            z-index: 0;
+        }
     }
 }.history-links {
     display: grid;

@@ -30,7 +30,7 @@ module.exports = class {
 
         // - Парсим json шаблон токена.
         let tpl = trs.template()
-        let json = cm.build_nft_json(tpl, ts1, image_url)
+        let json = cm.build_nft_json(tpl, ts1, image_url) 
 
         // - Льем json в IPFS
         let ret_json = await this.ipfs.upload_file(JSON.stringify(json))

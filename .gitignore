@@ -3,4 +3,4 @@ node_modules
 truffle-config.js
 robot/data
 back/conf.js
-back/data/sprites
+back/data/sprites 

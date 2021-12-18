@@ -132,14 +132,33 @@ class Bia {
 	}
 
 	async getProposal(id) {
-		const proposal = ({ id, ...await this.rarinonDAOContractRpc.methods.history(id).call() })
-		return proposal
+		if (this.connected) {
+			const proposal = ({ id, ...await this.rarinonDAOContract.methods.history(id).call() })
+			return proposal
+		} else {
+			const proposal = ({ id, ...await this.rarinonDAOContractRpc.methods.history(id).call() })
+			return proposal
+		}
 	}
 
 	async isNftOwner() {
-		console.log(this.accountAddress)
 		const nfts = await this.rarinonNFTContract.methods.balanceOf(this.accountAddress).call()
-		console.log(nfts)
+		return Number(nfts) > 0
+	}
+
+	async isNotVoted(id) {
+		const proposal = ({ id, ...await this.rarinonDAOContract.methods.history(id).call() })
+		return !proposal.voters.includes(this.accountAddress)
+	}
+
+	async voteYes(id) {
+		const res = await this.rarinonDAOContract.methods.voteYes(id).send({ from: this.accountAddress })
+		return res
+	}
+
+	async voteNo(id) {
+		const res = await this.rarinonDAOContract.methods.voteNo(id).send({ from: this.accountAddress })
+		return res
 	}
 
 	async getHistoryCount() {

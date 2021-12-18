@@ -84,7 +84,7 @@ const CreateProposal = () => {
 			<div className="container-lg">
 				<div className="align-items-center row">
 					<div className="col-lg-8 offset-lg-2">
-						<a className="all-title" href="/vote">
+						<a className="all-title" href="/votes">
 							← All Proposals
 						</a>
 					</div>

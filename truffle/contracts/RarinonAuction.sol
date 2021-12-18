@@ -107,7 +107,7 @@ contract RarinonAuction is Ownable {
 
     function close() public {
         require(canClose(), "Can not close auction now.");
-        Round storage round = _history[_history.length - 1];
+        Round storage round = _history[_history.length - 1]; 
 
         round.closed = true;
 
