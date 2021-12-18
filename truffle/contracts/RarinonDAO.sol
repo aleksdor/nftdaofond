@@ -48,7 +48,7 @@ contract RarinonDAO is Ownable {
     }
 
     function set_round_sec(uint256 round_sec_) onlyOwner public {
-        round_sec = round_sec_;
+        round_sec = round_sec_; 
     }
 
     function set_quorum(uint32 quorum_) onlyOwner public {
