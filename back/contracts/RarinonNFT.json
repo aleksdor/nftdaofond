@@ -22,7 +22,7 @@
       "inputs": [
         {
           "indexed": true,
-          "internalType": "address",
+          "internalType": "address", 
           "name": "owner",
           "type": "address"
         },
