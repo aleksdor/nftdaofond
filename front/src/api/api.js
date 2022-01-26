@@ -15,6 +15,7 @@ import {
 import { abi as rarinonNFTAbi, bytecode as rarinonNFTBytecode } from '../config/RarinonNFT.json';
 import { abi as rarinonDAOAbi, bytecode as rarinonDAOBytecode } from '../config/RarinonDAO.json';
 import { abi as rarinonAuctionAbi, bytecode as rarinonAuctionBytecode } from '../config/RarinonAuction.json';
+import { gasPrice } from '../config/default.json'
 class Bia {
 	constructor() {
 		this.connected = false;
@@ -117,7 +118,7 @@ class Bia {
 	async addProposal(account, amount, title, url) {
 		const amountInWei = this.web3.utils.toWei(String(amount))
 		console.log({ account, amountInWei, title, url })
-		const res = await this.rarinonDAOContract.methods.addProposal(account, amountInWei, title, url).send({ from: this.accountAddress })
+		const res = await this.rarinonDAOContract.methods.addProposal(account, amountInWei, title, url).send({ from: this.accountAddress, gasPric: this.web3.utils.toWei(gasPrice) })
 		console.log(res)
 	}
 

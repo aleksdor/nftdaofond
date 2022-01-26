@@ -42,6 +42,9 @@ const NounInfo = () => {
 				setMinutes('0')
 				setSeconds('0')
 				setBidDisabled(true)
+				// TODO doesnt work
+				// changeHistoryPage(currentHistoryId + 1)
+				// clearInterval(calc)
 			} else {
 				let delta = Math.abs(endAt - currentTime) / 1000;
 				const days = Math.floor(delta / 86400);

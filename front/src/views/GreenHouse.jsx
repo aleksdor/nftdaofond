@@ -190,7 +190,7 @@ const GreenHouse = () => {
 	const merge = () => {
 		let newNouns = nouns
 		const images = mergeData.map(({ link, random, data }) => random ? data[Math.floor(Math.random() * data.length)].link : link)
-		mergeImages(images).then(b64 => {
+		mergeImages(images, { quality: 0.92 }).then(b64 => {
 			newNouns.unshift(b64)
 			setNouns([...newNouns])
 		});
@@ -285,7 +285,7 @@ const GreenHouse = () => {
 						<div className="col-lg-9">
 							<div className="row">
 								{nouns.map((noun) => (
-									<div className="col-lg-3 col-4">
+									<div className="col-lg-3 col-4" key={noun}>
 										<div>
 											<NounImgWrapper>
 												<NounImg src={noun} alt="noun" className="img-fluid" onClick={() => showModalWindow(noun)} />

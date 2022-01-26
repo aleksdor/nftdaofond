@@ -2,7 +2,8 @@
   "networkParameters": {
     "rpc": "https://ropsten.infura.io/v3/7f6d1c0c48cc4af7923ff507c64cd8e3"
   },
-  "rarinonDAOAddress": "0x3DF183f7aB77D4Ca6A3274Cc0A21a9B081DB81Af",
-  "rarinonNFTAddress": "0xc2269E3A7f46ff05ADB2d728cdE92B1fAb65FAC6",
-  "rarinonAuctionAddress": "0xCC3cf7C43F625A39e2EEBcD7A18213b7f2E8D37D"
+  "rarinonDAOAddress": "0xAD3392d05F5822064974FE1494D8D3aa4ADc0A30",
+  "rarinonNFTAddress": "0x137611E006Bd19663819068b71f015d20785DA17",
+  "rarinonAuctionAddress": "0x5Add0Af574d778e54C00a14a6b152ecA50735Bfa",
+  "gasPrice": "6.136600806"
 }
