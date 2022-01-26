@@ -14522,4 +14522,4200 @@
                     "lValueRequested": false,
                     "memberName": "length",
                     "nodeType": "MemberAccess",
+<<<<<<< HEAD
+                    "src": "1498:15:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 1827,
+                  "id": 1830,
+                  "nodeType": "Return",
+                  "src": "1491:22:12"
+                }
+              ]
+            },
+            "functionSelector": "3a9c9ffc",
+            "id": 1832,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "historyCount",
+            "nameLocation": "1436:12:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1824,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1448:2:12"
+            },
+            "returnParameters": {
+              "id": 1827,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1826,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1832,
+                  "src": "1472:7:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1825,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1472:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1471:9:12"
+            },
+            "scope": 2160,
+            "src": "1427:94:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1844,
+              "nodeType": "Block",
+              "src": "1595:41:12",
+              "statements": [
+                {
+                  "expression": {
+                    "baseExpression": {
+                      "id": 1840,
+                      "name": "_history",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1823,
+                      "src": "1613:8:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_struct$_Round_$1812_storage_$dyn_storage",
+                        "typeString": "struct RarinonAuction.Round storage ref[] storage ref"
+                      }
+                    },
+                    "id": 1842,
+                    "indexExpression": {
+                      "id": 1841,
+                      "name": "index",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1834,
+                      "src": "1622:5:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "1613:15:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Round_$1812_storage",
+                      "typeString": "struct RarinonAuction.Round storage ref"
+                    }
+                  },
+                  "functionReturnParameters": 1839,
+                  "id": 1843,
+                  "nodeType": "Return",
+                  "src": "1606:22:12"
+                }
+              ]
+            },
+            "functionSelector": "a7a38f0b",
+            "id": 1845,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "history",
+            "nameLocation": "1538:7:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1835,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1834,
+                  "mutability": "mutable",
+                  "name": "index",
+                  "nameLocation": "1554:5:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1845,
+                  "src": "1546:13:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1833,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1546:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1545:15:12"
+            },
+            "returnParameters": {
+              "id": 1839,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1838,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1845,
+                  "src": "1582:12:12",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Round_$1812_memory_ptr",
+                    "typeString": "struct RarinonAuction.Round"
+                  },
+                  "typeName": {
+                    "id": 1837,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 1836,
+                      "name": "Round",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 1812,
+                      "src": "1582:5:12"
+                    },
+                    "referencedDeclaration": 1812,
+                    "src": "1582:5:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Round_$1812_storage_ptr",
+                      "typeString": "struct RarinonAuction.Round"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1581:14:12"
+            },
+            "scope": 2160,
+            "src": "1529:107:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1868,
+              "nodeType": "Block",
+              "src": "1706:92:12",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 1858,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 1854,
+                      "name": "nft",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1815,
+                      "src": "1717:3:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IERC721_$1797",
+                        "typeString": "contract IERC721"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "arguments": [
+                        {
+                          "id": 1856,
+                          "name": "nft_",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1847,
+                          "src": "1731:4:12",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        ],
+                        "id": 1855,
+                        "name": "IERC721",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1797,
+                        "src": "1723:7:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_IERC721_$1797_$",
+                          "typeString": "type(contract IERC721)"
+                        }
+                      },
+                      "id": 1857,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1723:13:12",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IERC721_$1797",
+                        "typeString": "contract IERC721"
+                      }
+                    },
+                    "src": "1717:19:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IERC721_$1797",
+                      "typeString": "contract IERC721"
+                    }
+                  },
+                  "id": 1859,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1717:19:12"
+                },
+                {
+                  "expression": {
+                    "id": 1862,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 1860,
+                      "name": "dao",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1817,
+                      "src": "1747:3:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 1861,
+                      "name": "dao_",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1849,
+                      "src": "1753:4:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "1747:10:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 1863,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1747:10:12"
+                },
+                {
+                  "expression": {
+                    "id": 1866,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 1864,
+                      "name": "round_sec",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1819,
+                      "src": "1768:9:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 1865,
+                      "name": "round_sec_",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1851,
+                      "src": "1780:10:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "1768:22:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 1867,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1768:22:12"
+                }
+              ]
+            },
+            "id": 1869,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nameLocation": "-1:-1:-1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1852,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1847,
+                  "mutability": "mutable",
+                  "name": "nft_",
+                  "nameLocation": "1666:4:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1869,
+                  "src": "1658:12:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1846,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1658:7:12",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1849,
+                  "mutability": "mutable",
+                  "name": "dao_",
+                  "nameLocation": "1680:4:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1869,
+                  "src": "1672:12:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1848,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1672:7:12",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1851,
+                  "mutability": "mutable",
+                  "name": "round_sec_",
+                  "nameLocation": "1694:10:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1869,
+                  "src": "1686:18:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1850,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1686:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1657:48:12"
+            },
+            "returnParameters": {
+              "id": 1853,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1706:0:12"
+            },
+            "scope": 2160,
+            "src": "1646:152:12",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1880,
+              "nodeType": "Block",
+              "src": "1867:41:12",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 1878,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 1876,
+                      "name": "round_sec",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1819,
+                      "src": "1878:9:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 1877,
+                      "name": "round_sec_",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1871,
+                      "src": "1890:10:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "1878:22:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 1879,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1878:22:12"
+                }
+              ]
+            },
+            "functionSelector": "4793918f",
+            "id": 1881,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "id": 1874,
+                "kind": "modifierInvocation",
+                "modifierName": {
+                  "id": 1873,
+                  "name": "onlyOwner",
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 46,
+                  "src": "1850:9:12"
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "1850:9:12"
+              }
+            ],
+            "name": "set_round_sec",
+            "nameLocation": "1815:13:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1872,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1871,
+                  "mutability": "mutable",
+                  "name": "round_sec_",
+                  "nameLocation": "1837:10:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1881,
+                  "src": "1829:18:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1870,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1829:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1828:20:12"
+            },
+            "returnParameters": {
+              "id": 1875,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1867:0:12"
+            },
+            "scope": 2160,
+            "src": "1806:102:12",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1892,
+              "nodeType": "Block",
+              "src": "1964:29:12",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 1890,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 1888,
+                      "name": "dao",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1817,
+                      "src": "1975:3:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 1889,
+                      "name": "dao_",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1883,
+                      "src": "1981:4:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "1975:10:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 1891,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1975:10:12"
+                }
+              ]
+            },
+            "functionSelector": "a0795101",
+            "id": 1893,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "id": 1886,
+                "kind": "modifierInvocation",
+                "modifierName": {
+                  "id": 1885,
+                  "name": "onlyOwner",
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 46,
+                  "src": "1947:9:12"
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "1947:9:12"
+              }
+            ],
+            "name": "set_dao",
+            "nameLocation": "1925:7:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1884,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1883,
+                  "mutability": "mutable",
+                  "name": "dao_",
+                  "nameLocation": "1941:4:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1893,
+                  "src": "1933:12:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1882,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1933:7:12",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1932:14:12"
+            },
+            "returnParameters": {
+              "id": 1887,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1964:0:12"
+            },
+            "scope": 2160,
+            "src": "1916:77:12",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1959,
+              "nodeType": "Block",
+              "src": "2046:381:12",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        "id": 1910,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "commonType": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          "id": 1902,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftExpression": {
+                            "expression": {
+                              "id": 1899,
+                              "name": "_history",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 1823,
+                              "src": "2065:8:12",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_struct$_Round_$1812_storage_$dyn_storage",
+                                "typeString": "struct RarinonAuction.Round storage ref[] storage ref"
+                              }
+                            },
+                            "id": 1900,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "length",
+                            "nodeType": "MemberAccess",
+                            "src": "2065:15:12",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "nodeType": "BinaryOperation",
+                          "operator": "==",
+                          "rightExpression": {
+                            "hexValue": "30",
+                            "id": 1901,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "2084:1:12",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_rational_0_by_1",
+                              "typeString": "int_const 0"
+                            },
+                            "value": "0"
+                          },
+                          "src": "2065:20:12",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "||",
+                        "rightExpression": {
+                          "expression": {
+                            "baseExpression": {
+                              "id": 1903,
+                              "name": "_history",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 1823,
+                              "src": "2089:8:12",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_struct$_Round_$1812_storage_$dyn_storage",
+                                "typeString": "struct RarinonAuction.Round storage ref[] storage ref"
+                              }
+                            },
+                            "id": 1908,
+                            "indexExpression": {
+                              "commonType": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              },
+                              "id": 1907,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "leftExpression": {
+                                "expression": {
+                                  "id": 1904,
+                                  "name": "_history",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 1823,
+                                  "src": "2098:8:12",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_array$_t_struct$_Round_$1812_storage_$dyn_storage",
+                                    "typeString": "struct RarinonAuction.Round storage ref[] storage ref"
+                                  }
+                                },
+                                "id": 1905,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "memberName": "length",
+                                "nodeType": "MemberAccess",
+                                "src": "2098:15:12",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              },
+                              "nodeType": "BinaryOperation",
+                              "operator": "-",
+                              "rightExpression": {
+                                "hexValue": "31",
+                                "id": 1906,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "kind": "number",
+                                "lValueRequested": false,
+                                "nodeType": "Literal",
+                                "src": "2116:1:12",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_rational_1_by_1",
+                                  "typeString": "int_const 1"
+                                },
+                                "value": "1"
+                              },
+                              "src": "2098:19:12",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            },
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "nodeType": "IndexAccess",
+                            "src": "2089:29:12",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_Round_$1812_storage",
+                              "typeString": "struct RarinonAuction.Round storage ref"
+                            }
+                          },
+                          "id": 1909,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "closed",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 1805,
+                          "src": "2089:36:12",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "src": "2065:60:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "41756374696f6e20696e2070726f6772657373",
+                        "id": 1911,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "2127:21:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_67f85a196ad184f65ff822f14db5bd6770f8f4235da8fbe232f9fdeba5b7f333",
+                          "typeString": "literal_string \"Auction in progress\""
+                        },
+                        "value": "Auction in progress"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_67f85a196ad184f65ff822f14db5bd6770f8f4235da8fbe232f9fdeba5b7f333",
+                          "typeString": "literal_string \"Auction in progress\""
+                        }
+                      ],
+                      "id": 1898,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "2057:7:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 1912,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "2057:92:12",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1913,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2057:92:12"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 1923,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "arguments": [
+                            {
+                              "id": 1917,
+                              "name": "tokenId",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 1895,
+                              "src": "2180:7:12",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            ],
+                            "expression": {
+                              "id": 1915,
+                              "name": "nft",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 1815,
+                              "src": "2168:3:12",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_contract$_IERC721_$1797",
+                                "typeString": "contract IERC721"
+                              }
+                            },
+                            "id": 1916,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "ownerOf",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 1790,
+                            "src": "2168:11:12",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_address_$",
+                              "typeString": "function (uint256) view external returns (address)"
+                            }
+                          },
+                          "id": 1918,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "2168:20:12",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "arguments": [
+                            {
+                              "id": 1921,
+                              "name": "this",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 4294967268,
+                              "src": "2200:4:12",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_contract$_RarinonAuction_$2160",
+                                "typeString": "contract RarinonAuction"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_contract$_RarinonAuction_$2160",
+                                "typeString": "contract RarinonAuction"
+                              }
+                            ],
+                            "id": 1920,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "ElementaryTypeNameExpression",
+                            "src": "2192:7:12",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_address_$",
+                              "typeString": "type(address)"
+                            },
+                            "typeName": {
+                              "id": 1919,
+                              "name": "address",
+                              "nodeType": "ElementaryTypeName",
+                              "src": "2192:7:12",
+                              "typeDescriptions": {}
+                            }
+                          },
+                          "id": 1922,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "2192:13:12",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "src": "2168:37:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "4e6f74206d7920746f6b656e",
+                        "id": 1924,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "2207:14:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_f95dc471e9852fdf74758895f9dbe7f205e083cee4e6dba1a4eb2a33216eba89",
+                          "typeString": "literal_string \"Not my token\""
+                        },
+                        "value": "Not my token"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_f95dc471e9852fdf74758895f9dbe7f205e083cee4e6dba1a4eb2a33216eba89",
+                          "typeString": "literal_string \"Not my token\""
+                        }
+                      ],
+                      "id": 1914,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "2160:7:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 1925,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "2160:62:12",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1926,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2160:62:12"
+                },
+                {
+                  "assignments": [
+                    1931
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 1931,
+                      "mutability": "mutable",
+                      "name": "bidders",
+                      "nameLocation": "2252:7:12",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 1959,
+                      "src": "2235:24:12",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                        "typeString": "address[]"
+                      },
+                      "typeName": {
+                        "baseType": {
+                          "id": 1929,
+                          "name": "address",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "2235:7:12",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "id": 1930,
+                        "nodeType": "ArrayTypeName",
+                        "src": "2235:9:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                          "typeString": "address[]"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 1932,
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "2235:24:12"
+                },
+                {
+                  "assignments": [
+                    1937
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 1937,
+                      "mutability": "mutable",
+                      "name": "bids",
+                      "nameLocation": "2287:4:12",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 1959,
+                      "src": "2270:21:12",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                        "typeString": "uint256[]"
+                      },
+                      "typeName": {
+                        "baseType": {
+                          "id": 1935,
+                          "name": "uint256",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "2270:7:12",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "id": 1936,
+                        "nodeType": "ArrayTypeName",
+                        "src": "2270:9:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                          "typeString": "uint256[]"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 1938,
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "2270:21:12"
+                },
+                {
+                  "assignments": [
+                    1941
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 1941,
+                      "mutability": "mutable",
+                      "name": "round",
+                      "nameLocation": "2315:5:12",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 1959,
+                      "src": "2302:18:12",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Round_$1812_memory_ptr",
+                        "typeString": "struct RarinonAuction.Round"
+                      },
+                      "typeName": {
+                        "id": 1940,
+                        "nodeType": "UserDefinedTypeName",
+                        "pathNode": {
+                          "id": 1939,
+                          "name": "Round",
+                          "nodeType": "IdentifierPath",
+                          "referencedDeclaration": 1812,
+                          "src": "2302:5:12"
+                        },
+                        "referencedDeclaration": 1812,
+                        "src": "2302:5:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Round_$1812_storage_ptr",
+                          "typeString": "struct RarinonAuction.Round"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 1952,
+                  "initialValue": {
+                    "arguments": [
+                      {
+                        "id": 1943,
+                        "name": "tokenId",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1895,
+                        "src": "2329:7:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "id": 1947,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "expression": {
+                            "id": 1944,
+                            "name": "block",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 4294967292,
+                            "src": "2338:5:12",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_block",
+                              "typeString": "block"
+                            }
+                          },
+                          "id": 1945,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "timestamp",
+                          "nodeType": "MemberAccess",
+                          "src": "2338:15:12",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "+",
+                        "rightExpression": {
+                          "id": 1946,
+                          "name": "round_sec",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1819,
+                          "src": "2356:9:12",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "src": "2338:27:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "hexValue": "66616c7365",
+                        "id": 1948,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "bool",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "2367:5:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        "value": "false"
+                      },
+                      {
+                        "id": 1949,
+                        "name": "bidders",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1931,
+                        "src": "2374:7:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                          "typeString": "address[] memory"
+                        }
+                      },
+                      {
+                        "id": 1950,
+                        "name": "bids",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1937,
+                        "src": "2383:4:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                          "typeString": "uint256[] memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                          "typeString": "address[] memory"
+                        },
+                        {
+                          "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                          "typeString": "uint256[] memory"
+                        }
+                      ],
+                      "id": 1942,
+                      "name": "Round",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1812,
+                      "src": "2323:5:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_struct$_Round_$1812_storage_ptr_$",
+                        "typeString": "type(struct RarinonAuction.Round storage pointer)"
+                      }
+                    },
+                    "id": 1951,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "structConstructorCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "2323:65:12",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Round_$1812_memory_ptr",
+                      "typeString": "struct RarinonAuction.Round memory"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "2302:86:12"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 1956,
+                        "name": "round",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1941,
+                        "src": "2413:5:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Round_$1812_memory_ptr",
+                          "typeString": "struct RarinonAuction.Round memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_struct$_Round_$1812_memory_ptr",
+                          "typeString": "struct RarinonAuction.Round memory"
+                        }
+                      ],
+                      "expression": {
+                        "id": 1953,
+                        "name": "_history",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1823,
+                        "src": "2399:8:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_struct$_Round_$1812_storage_$dyn_storage",
+                          "typeString": "struct RarinonAuction.Round storage ref[] storage ref"
+                        }
+                      },
+                      "id": 1955,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "push",
+                      "nodeType": "MemberAccess",
+                      "src": "2399:13:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_array$_t_struct$_Round_$1812_storage_$dyn_storage_ptr_$_t_struct$_Round_$1812_storage_$returns$__$bound_to$_t_array$_t_struct$_Round_$1812_storage_$dyn_storage_ptr_$",
+                        "typeString": "function (struct RarinonAuction.Round storage ref[] storage pointer,struct RarinonAuction.Round storage ref)"
+                      }
+                    },
+                    "id": 1957,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "2399:20:12",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1958,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2399:20:12"
+                }
+              ]
+            },
+            "functionSelector": "3da1bba1",
+            "id": 1960,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "createRound",
+            "nameLocation": "2010:11:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1896,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1895,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "2030:7:12",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1960,
+                  "src": "2022:15:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1894,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2022:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2021:17:12"
+            },
+            "returnParameters": {
+              "id": 1897,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2046:0:12"
+            },
+            "scope": 2160,
+            "src": "2001:426:12",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 2056,
+              "nodeType": "Block",
+              "src": "2471:603:12",
+              "statements": [
+                {
+                  "assignments": [
+                    1965
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 1965,
+                      "mutability": "mutable",
+                      "name": "round",
+                      "nameLocation": "2496:5:12",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 2056,
+                      "src": "2482:19:12",
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Round_$1812_storage_ptr",
+                        "typeString": "struct RarinonAuction.Round"
+                      },
+                      "typeName": {
+                        "id": 1964,
+                        "nodeType": "UserDefinedTypeName",
+                        "pathNode": {
+                          "id": 1963,
+                          "name": "Round",
+                          "nodeType": "IdentifierPath",
+                          "referencedDeclaration": 1812,
+                          "src": "2482:5:12"
+                        },
+                        "referencedDeclaration": 1812,
+                        "src": "2482:5:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Round_$1812_storage_ptr",
+                          "typeString": "struct RarinonAuction.Round"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 1972,
+                  "initialValue": {
+                    "baseExpression": {
+                      "id": 1966,
+                      "name": "_history",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1823,
+                      "src": "2504:8:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_struct$_Round_$1812_storage_$dyn_storage",
+                        "typeString": "struct RarinonAuction.Round storage ref[] storage ref"
+                      }
+                    },
+                    "id": 1971,
+                    "indexExpression": {
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 1970,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "expression": {
+                          "id": 1967,
+                          "name": "_history",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1823,
+                          "src": "2513:8:12",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_array$_t_struct$_Round_$1812_storage_$dyn_storage",
+                            "typeString": "struct RarinonAuction.Round storage ref[] storage ref"
+                          }
+                        },
+                        "id": 1968,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "length",
+                        "nodeType": "MemberAccess",
+                        "src": "2513:15:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "-",
+                      "rightExpression": {
+                        "hexValue": "31",
+                        "id": 1969,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "2531:1:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        },
+                        "value": "1"
+                      },
+                      "src": "2513:19:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "2504:29:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Round_$1812_storage",
+                      "typeString": "struct RarinonAuction.Round storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "2482:51:12"
+                },
+                {
+                  "assignments": [
+                    1974
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 1974,
+                      "mutability": "mutable",
+                      "name": "currentBid",
+                      "nameLocation": "2552:10:12",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 2056,
+                      "src": "2544:18:12",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "typeName": {
+                        "id": 1973,
+                        "name": "uint256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "2544:7:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 1990,
+                  "initialValue": {
+                    "condition": {
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 1979,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "expression": {
+                          "expression": {
+                            "id": 1975,
+                            "name": "round",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1965,
+                            "src": "2565:5:12",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_Round_$1812_storage_ptr",
+                              "typeString": "struct RarinonAuction.Round storage pointer"
+                            }
+                          },
+                          "id": 1976,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "bids",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 1811,
+                          "src": "2565:10:12",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_array$_t_uint256_$dyn_storage",
+                            "typeString": "uint256[] storage ref"
+                          }
+                        },
+                        "id": 1977,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "length",
+                        "nodeType": "MemberAccess",
+                        "src": "2565:17:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": ">",
+                      "rightExpression": {
+                        "hexValue": "30",
+                        "id": 1978,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "2585:1:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_0_by_1",
+                          "typeString": "int_const 0"
+                        },
+                        "value": "0"
+                      },
+                      "src": "2565:21:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "falseExpression": {
+                      "hexValue": "30",
+                      "id": 1988,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "2625:1:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_0_by_1",
+                        "typeString": "int_const 0"
+                      },
+                      "value": "0"
+                    },
+                    "id": 1989,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "Conditional",
+                    "src": "2565:61:12",
+                    "trueExpression": {
+                      "baseExpression": {
+                        "expression": {
+                          "id": 1980,
+                          "name": "round",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1965,
+                          "src": "2589:5:12",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Round_$1812_storage_ptr",
+                            "typeString": "struct RarinonAuction.Round storage pointer"
+                          }
+                        },
+                        "id": 1981,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "bids",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1811,
+                        "src": "2589:10:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_uint256_$dyn_storage",
+                          "typeString": "uint256[] storage ref"
+                        }
+                      },
+                      "id": 1987,
+                      "indexExpression": {
+                        "commonType": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "id": 1986,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "expression": {
+                            "expression": {
+                              "id": 1982,
+                              "name": "round",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 1965,
+                              "src": "2600:5:12",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Round_$1812_storage_ptr",
+                                "typeString": "struct RarinonAuction.Round storage pointer"
+                              }
+                            },
+                            "id": 1983,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "bids",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 1811,
+                            "src": "2600:10:12",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_array$_t_uint256_$dyn_storage",
+                              "typeString": "uint256[] storage ref"
+                            }
+                          },
+                          "id": 1984,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "length",
+                          "nodeType": "MemberAccess",
+                          "src": "2600:17:12",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "-",
+                        "rightExpression": {
+                          "hexValue": "31",
+                          "id": 1985,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "2620:1:12",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_1_by_1",
+                            "typeString": "int_const 1"
+                          },
+                          "value": "1"
+                        },
+                        "src": "2600:21:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "IndexAccess",
+                      "src": "2589:33:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "2544:82:12"
+                },
+                {
+                  "assignments": [
+                    1992
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 1992,
+                      "mutability": "mutable",
+                      "name": "nextBid",
+                      "nameLocation": "2645:7:12",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 2056,
+                      "src": "2637:15:12",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "typeName": {
+                        "id": 1991,
+                        "name": "uint256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "2637:7:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 1998,
+                  "initialValue": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 1997,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 1995,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "id": 1993,
+                        "name": "currentBid",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1974,
+                        "src": "2655:10:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "*",
+                      "rightExpression": {
+                        "hexValue": "3133",
+                        "id": 1994,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "2668:2:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_13_by_1",
+                          "typeString": "int_const 13"
+                        },
+                        "value": "13"
+                      },
+                      "src": "2655:15:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "/",
+                    "rightExpression": {
+                      "hexValue": "3130",
+                      "id": 1996,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "2673:2:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_10_by_1",
+                        "typeString": "int_const 10"
+                      },
+                      "value": "10"
+                    },
+                    "src": "2655:20:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "2637:38:12"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "id": 2003,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "expression": {
+                            "id": 2000,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 4294967281,
+                            "src": "2694:3:12",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 2001,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "value",
+                          "nodeType": "MemberAccess",
+                          "src": "2694:9:12",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": ">",
+                        "rightExpression": {
+                          "id": 2002,
+                          "name": "nextBid",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1992,
+                          "src": "2706:7:12",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "src": "2694:19:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "42696420697320746f6f206c6f772e",
+                        "id": 2004,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "2715:17:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_fe7c9c4f95d67c6aed5d936f5d46ecc2043caf4b57ba749c063b615ad2ddef46",
+                          "typeString": "literal_string \"Bid is too low.\""
+                        },
+                        "value": "Bid is too low."
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_fe7c9c4f95d67c6aed5d936f5d46ecc2043caf4b57ba749c063b615ad2ddef46",
+                          "typeString": "literal_string \"Bid is too low.\""
+                        }
+                      ],
+                      "id": 1999,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "2686:7:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 2005,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "2686:47:12",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 2006,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2686:47:12"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "expression": {
+                          "id": 2012,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 4294967281,
+                          "src": "2773:3:12",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 2013,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "src": "2773:10:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "expression": {
+                          "id": 2007,
+                          "name": "round",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1965,
+                          "src": "2754:5:12",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Round_$1812_storage_ptr",
+                            "typeString": "struct RarinonAuction.Round storage pointer"
+                          }
+                        },
+                        "id": 2010,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "bidders",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1808,
+                        "src": "2754:13:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                          "typeString": "address[] storage ref"
+                        }
+                      },
+                      "id": 2011,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "push",
+                      "nodeType": "MemberAccess",
+                      "src": "2754:18:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_array$_t_address_$dyn_storage_ptr_$_t_address_$returns$__$bound_to$_t_array$_t_address_$dyn_storage_ptr_$",
+                        "typeString": "function (address[] storage pointer,address)"
+                      }
+                    },
+                    "id": 2014,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "2754:30:12",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 2015,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2754:30:12"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "expression": {
+                          "id": 2021,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 4294967281,
+                          "src": "2811:3:12",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 2022,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "value",
+                        "nodeType": "MemberAccess",
+                        "src": "2811:9:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "expression": {
+                          "id": 2016,
+                          "name": "round",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1965,
+                          "src": "2795:5:12",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Round_$1812_storage_ptr",
+                            "typeString": "struct RarinonAuction.Round storage pointer"
+                          }
+                        },
+                        "id": 2019,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "bids",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1811,
+                        "src": "2795:10:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_uint256_$dyn_storage",
+                          "typeString": "uint256[] storage ref"
+                        }
+                      },
+                      "id": 2020,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "push",
+                      "nodeType": "MemberAccess",
+                      "src": "2795:15:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_array$_t_uint256_$dyn_storage_ptr_$_t_uint256_$returns$__$bound_to$_t_array$_t_uint256_$dyn_storage_ptr_$",
+                        "typeString": "function (uint256[] storage pointer,uint256)"
+                      }
+                    },
+                    "id": 2023,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "2795:26:12",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 2024,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2795:26:12"
+                },
+                {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 2029,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "expression": {
+                        "expression": {
+                          "id": 2025,
+                          "name": "round",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1965,
+                          "src": "2902:5:12",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Round_$1812_storage_ptr",
+                            "typeString": "struct RarinonAuction.Round storage pointer"
+                          }
+                        },
+                        "id": 2026,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "bidders",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1808,
+                        "src": "2902:13:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                          "typeString": "address[] storage ref"
+                        }
+                      },
+                      "id": 2027,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "length",
+                      "nodeType": "MemberAccess",
+                      "src": "2902:20:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": ">",
+                    "rightExpression": {
+                      "hexValue": "31",
+                      "id": 2028,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "2925:1:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_1_by_1",
+                        "typeString": "int_const 1"
+                      },
+                      "value": "1"
+                    },
+                    "src": "2902:24:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 2055,
+                  "nodeType": "IfStatement",
+                  "src": "2898:169:12",
+                  "trueBody": {
+                    "id": 2054,
+                    "nodeType": "Block",
+                    "src": "2927:140:12",
+                    "statements": [
+                      {
+                        "assignments": [
+                          2031
+                        ],
+                        "declarations": [
+                          {
+                            "constant": false,
+                            "id": 2031,
+                            "mutability": "mutable",
+                            "name": "index",
+                            "nameLocation": "2950:5:12",
+                            "nodeType": "VariableDeclaration",
+                            "scope": 2054,
+                            "src": "2942:13:12",
+                            "stateVariable": false,
+                            "storageLocation": "default",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            },
+                            "typeName": {
+                              "id": 2030,
+                              "name": "uint256",
+                              "nodeType": "ElementaryTypeName",
+                              "src": "2942:7:12",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            },
+                            "visibility": "internal"
+                          }
+                        ],
+                        "id": 2035,
+                        "initialValue": {
+                          "expression": {
+                            "expression": {
+                              "id": 2032,
+                              "name": "round",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 1965,
+                              "src": "2958:5:12",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Round_$1812_storage_ptr",
+                                "typeString": "struct RarinonAuction.Round storage pointer"
+                              }
+                            },
+                            "id": 2033,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "bids",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 1811,
+                            "src": "2958:10:12",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_array$_t_uint256_$dyn_storage",
+                              "typeString": "uint256[] storage ref"
+                            }
+                          },
+                          "id": 2034,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "length",
+                          "nodeType": "MemberAccess",
+                          "src": "2958:17:12",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "VariableDeclarationStatement",
+                        "src": "2942:33:12"
+                      },
+                      {
+                        "expression": {
+                          "arguments": [
+                            {
+                              "baseExpression": {
+                                "expression": {
+                                  "id": 2046,
+                                  "name": "round",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 1965,
+                                  "src": "3033:5:12",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_struct$_Round_$1812_storage_ptr",
+                                    "typeString": "struct RarinonAuction.Round storage pointer"
+                                  }
+                                },
+                                "id": 2047,
+                                "isConstant": false,
+                                "isLValue": true,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "memberName": "bids",
+                                "nodeType": "MemberAccess",
+                                "referencedDeclaration": 1811,
+                                "src": "3033:10:12",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_array$_t_uint256_$dyn_storage",
+                                  "typeString": "uint256[] storage ref"
+                                }
+                              },
+                              "id": 2051,
+                              "indexExpression": {
+                                "commonType": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                },
+                                "id": 2050,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "leftExpression": {
+                                  "id": 2048,
+                                  "name": "index",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 2031,
+                                  "src": "3044:5:12",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  }
+                                },
+                                "nodeType": "BinaryOperation",
+                                "operator": "-",
+                                "rightExpression": {
+                                  "hexValue": "32",
+                                  "id": 2049,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "kind": "number",
+                                  "lValueRequested": false,
+                                  "nodeType": "Literal",
+                                  "src": "3052:1:12",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_rational_2_by_1",
+                                    "typeString": "int_const 2"
+                                  },
+                                  "value": "2"
+                                },
+                                "src": "3044:9:12",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              },
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "nodeType": "IndexAccess",
+                              "src": "3033:21:12",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            ],
+                            "expression": {
+                              "arguments": [
+                                {
+                                  "baseExpression": {
+                                    "expression": {
+                                      "id": 2038,
+                                      "name": "round",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 1965,
+                                      "src": "2998:5:12",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_Round_$1812_storage_ptr",
+                                        "typeString": "struct RarinonAuction.Round storage pointer"
+                                      }
+                                    },
+                                    "id": 2039,
+                                    "isConstant": false,
+                                    "isLValue": true,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "memberName": "bidders",
+                                    "nodeType": "MemberAccess",
+                                    "referencedDeclaration": 1808,
+                                    "src": "2998:13:12",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                                      "typeString": "address[] storage ref"
+                                    }
+                                  },
+                                  "id": 2043,
+                                  "indexExpression": {
+                                    "commonType": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    },
+                                    "id": 2042,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "leftExpression": {
+                                      "id": 2040,
+                                      "name": "index",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 2031,
+                                      "src": "3012:5:12",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                      }
+                                    },
+                                    "nodeType": "BinaryOperation",
+                                    "operator": "-",
+                                    "rightExpression": {
+                                      "hexValue": "32",
+                                      "id": 2041,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "kind": "number",
+                                      "lValueRequested": false,
+                                      "nodeType": "Literal",
+                                      "src": "3020:1:12",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_rational_2_by_1",
+                                        "typeString": "int_const 2"
+                                      },
+                                      "value": "2"
+                                    },
+                                    "src": "3012:9:12",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  },
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "nodeType": "IndexAccess",
+                                  "src": "2998:24:12",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  }
+                                }
+                              ],
+                              "expression": {
+                                "argumentTypes": [
+                                  {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  }
+                                ],
+                                "id": 2037,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "lValueRequested": false,
+                                "nodeType": "ElementaryTypeNameExpression",
+                                "src": "2990:8:12",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_type$_t_address_payable_$",
+                                  "typeString": "type(address payable)"
+                                },
+                                "typeName": {
+                                  "id": 2036,
+                                  "name": "address",
+                                  "nodeType": "ElementaryTypeName",
+                                  "src": "2990:8:12",
+                                  "stateMutability": "payable",
+                                  "typeDescriptions": {}
+                                }
+                              },
+                              "id": 2044,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "kind": "typeConversion",
+                              "lValueRequested": false,
+                              "names": [],
+                              "nodeType": "FunctionCall",
+                              "src": "2990:33:12",
+                              "tryCall": false,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address_payable",
+                                "typeString": "address payable"
+                              }
+                            },
+                            "id": 2045,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "transfer",
+                            "nodeType": "MemberAccess",
+                            "src": "2990:42:12",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_transfer_nonpayable$_t_uint256_$returns$__$",
+                              "typeString": "function (uint256)"
+                            }
+                          },
+                          "id": 2052,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "2990:65:12",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 2053,
+                        "nodeType": "ExpressionStatement",
+                        "src": "2990:65:12"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "functionSelector": "83624074",
+            "id": 2057,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "createBid",
+            "nameLocation": "2444:9:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1961,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2453:2:12"
+            },
+            "returnParameters": {
+              "id": 1962,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2471:0:12"
+            },
+            "scope": 2160,
+            "src": "2435:639:12",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 2082,
+              "nodeType": "Block",
+              "src": "3128:145:12",
+              "statements": [
+                {
+                  "assignments": [
+                    2064
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 2064,
+                      "mutability": "mutable",
+                      "name": "round",
+                      "nameLocation": "3152:5:12",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 2082,
+                      "src": "3139:18:12",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Round_$1812_memory_ptr",
+                        "typeString": "struct RarinonAuction.Round"
+                      },
+                      "typeName": {
+                        "id": 2063,
+                        "nodeType": "UserDefinedTypeName",
+                        "pathNode": {
+                          "id": 2062,
+                          "name": "Round",
+                          "nodeType": "IdentifierPath",
+                          "referencedDeclaration": 1812,
+                          "src": "3139:5:12"
+                        },
+                        "referencedDeclaration": 1812,
+                        "src": "3139:5:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Round_$1812_storage_ptr",
+                          "typeString": "struct RarinonAuction.Round"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 2071,
+                  "initialValue": {
+                    "baseExpression": {
+                      "id": 2065,
+                      "name": "_history",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1823,
+                      "src": "3160:8:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_struct$_Round_$1812_storage_$dyn_storage",
+                        "typeString": "struct RarinonAuction.Round storage ref[] storage ref"
+                      }
+                    },
+                    "id": 2070,
+                    "indexExpression": {
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 2069,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "expression": {
+                          "id": 2066,
+                          "name": "_history",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1823,
+                          "src": "3169:8:12",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_array$_t_struct$_Round_$1812_storage_$dyn_storage",
+                            "typeString": "struct RarinonAuction.Round storage ref[] storage ref"
+                          }
+                        },
+                        "id": 2067,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "length",
+                        "nodeType": "MemberAccess",
+                        "src": "3169:15:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "-",
+                      "rightExpression": {
+                        "hexValue": "31",
+                        "id": 2068,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "3187:1:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        },
+                        "value": "1"
+                      },
+                      "src": "3169:19:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "3160:29:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Round_$1812_storage",
+                      "typeString": "struct RarinonAuction.Round storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "3139:50:12"
+                },
+                {
+                  "expression": {
+                    "commonType": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "id": 2080,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "id": 2074,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "UnaryOperation",
+                      "operator": "!",
+                      "prefix": true,
+                      "src": "3209:13:12",
+                      "subExpression": {
+                        "expression": {
+                          "id": 2072,
+                          "name": "round",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2064,
+                          "src": "3210:5:12",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Round_$1812_memory_ptr",
+                            "typeString": "struct RarinonAuction.Round memory"
+                          }
+                        },
+                        "id": 2073,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "closed",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1805,
+                        "src": "3210:12:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "&&",
+                    "rightExpression": {
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 2079,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "expression": {
+                          "id": 2075,
+                          "name": "block",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 4294967292,
+                          "src": "3226:5:12",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_block",
+                            "typeString": "block"
+                          }
+                        },
+                        "id": 2076,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "timestamp",
+                        "nodeType": "MemberAccess",
+                        "src": "3226:15:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": ">=",
+                      "rightExpression": {
+                        "expression": {
+                          "id": 2077,
+                          "name": "round",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2064,
+                          "src": "3245:5:12",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Round_$1812_memory_ptr",
+                            "typeString": "struct RarinonAuction.Round memory"
+                          }
+                        },
+                        "id": 2078,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "end_at",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1803,
+                        "src": "3245:12:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "src": "3226:31:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "3209:48:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 2061,
+                  "id": 2081,
+                  "nodeType": "Return",
+                  "src": "3202:55:12"
+                }
+              ]
+            },
+            "functionSelector": "f7049d78",
+            "id": 2083,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "canClose",
+            "nameLocation": "3091:8:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2058,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3099:2:12"
+            },
+            "returnParameters": {
+              "id": 2061,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2060,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2083,
+                  "src": "3123:4:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 2059,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3123:4:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3122:6:12"
+            },
+            "scope": 2160,
+            "src": "3082:191:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 2154,
+              "nodeType": "Block",
+              "src": "3305:566:12",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "arguments": [],
+                        "expression": {
+                          "argumentTypes": [],
+                          "id": 2087,
+                          "name": "canClose",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2083,
+                          "src": "3324:8:12",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_internal_view$__$returns$_t_bool_$",
+                            "typeString": "function () view returns (bool)"
+                          }
+                        },
+                        "id": 2088,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "3324:10:12",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "43616e206e6f7420636c6f73652061756374696f6e206e6f772e",
+                        "id": 2089,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "3336:28:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_ae577cc5f08b81582a950f117e7b92b6abcbc046c1b3ccc6df2478e0c1321467",
+                          "typeString": "literal_string \"Can not close auction now.\""
+                        },
+                        "value": "Can not close auction now."
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_ae577cc5f08b81582a950f117e7b92b6abcbc046c1b3ccc6df2478e0c1321467",
+                          "typeString": "literal_string \"Can not close auction now.\""
+                        }
+                      ],
+                      "id": 2086,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "3316:7:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 2090,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "3316:49:12",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 2091,
+                  "nodeType": "ExpressionStatement",
+                  "src": "3316:49:12"
+                },
+                {
+                  "assignments": [
+                    2094
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 2094,
+                      "mutability": "mutable",
+                      "name": "round",
+                      "nameLocation": "3390:5:12",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 2154,
+                      "src": "3376:19:12",
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Round_$1812_storage_ptr",
+                        "typeString": "struct RarinonAuction.Round"
+                      },
+                      "typeName": {
+                        "id": 2093,
+                        "nodeType": "UserDefinedTypeName",
+                        "pathNode": {
+                          "id": 2092,
+                          "name": "Round",
+                          "nodeType": "IdentifierPath",
+                          "referencedDeclaration": 1812,
+                          "src": "3376:5:12"
+                        },
+                        "referencedDeclaration": 1812,
+                        "src": "3376:5:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Round_$1812_storage_ptr",
+                          "typeString": "struct RarinonAuction.Round"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 2101,
+                  "initialValue": {
+                    "baseExpression": {
+                      "id": 2095,
+                      "name": "_history",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1823,
+                      "src": "3398:8:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_struct$_Round_$1812_storage_$dyn_storage",
+                        "typeString": "struct RarinonAuction.Round storage ref[] storage ref"
+                      }
+                    },
+                    "id": 2100,
+                    "indexExpression": {
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 2099,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "expression": {
+                          "id": 2096,
+                          "name": "_history",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1823,
+                          "src": "3407:8:12",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_array$_t_struct$_Round_$1812_storage_$dyn_storage",
+                            "typeString": "struct RarinonAuction.Round storage ref[] storage ref"
+                          }
+                        },
+                        "id": 2097,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "length",
+                        "nodeType": "MemberAccess",
+                        "src": "3407:15:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "-",
+                      "rightExpression": {
+                        "hexValue": "31",
+                        "id": 2098,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "3425:1:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        },
+                        "value": "1"
+                      },
+                      "src": "3407:19:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "3398:29:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Round_$1812_storage",
+                      "typeString": "struct RarinonAuction.Round storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "3376:51:12"
+                },
+                {
+                  "expression": {
+                    "id": 2106,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "expression": {
+                        "id": 2102,
+                        "name": "round",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2094,
+                        "src": "3440:5:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Round_$1812_storage_ptr",
+                          "typeString": "struct RarinonAuction.Round storage pointer"
+                        }
+                      },
+                      "id": 2104,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "closed",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1805,
+                      "src": "3440:12:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "hexValue": "74727565",
+                      "id": 2105,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "bool",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "3455:4:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "value": "true"
+                    },
+                    "src": "3440:19:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 2107,
+                  "nodeType": "ExpressionStatement",
+                  "src": "3440:19:12"
+                },
+                {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 2112,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "expression": {
+                        "expression": {
+                          "id": 2108,
+                          "name": "round",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2094,
+                          "src": "3547:5:12",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Round_$1812_storage_ptr",
+                            "typeString": "struct RarinonAuction.Round storage pointer"
+                          }
+                        },
+                        "id": 2109,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "bidders",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1808,
+                        "src": "3547:13:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                          "typeString": "address[] storage ref"
+                        }
+                      },
+                      "id": 2110,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "length",
+                      "nodeType": "MemberAccess",
+                      "src": "3547:20:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": ">",
+                    "rightExpression": {
+                      "hexValue": "30",
+                      "id": 2111,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "3570:1:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_0_by_1",
+                        "typeString": "int_const 0"
+                      },
+                      "value": "0"
+                    },
+                    "src": "3547:24:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": {
+                    "id": 2152,
+                    "nodeType": "Block",
+                    "src": "3814:50:12",
+                    "statements": [
+                      {
+                        "expression": {
+                          "arguments": [
+                            {
+                              "expression": {
+                                "id": 2148,
+                                "name": "round",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 2094,
+                                "src": "3838:5:12",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_Round_$1812_storage_ptr",
+                                  "typeString": "struct RarinonAuction.Round storage pointer"
+                                }
+                              },
+                              "id": 2149,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "tokenId",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": 1801,
+                              "src": "3838:13:12",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            ],
+                            "expression": {
+                              "id": 2145,
+                              "name": "nft",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 1815,
+                              "src": "3829:3:12",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_contract$_IERC721_$1797",
+                                "typeString": "contract IERC721"
+                              }
+                            },
+                            "id": 2147,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "burn",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 1796,
+                            "src": "3829:8:12",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_external_nonpayable$_t_uint256_$returns$__$",
+                              "typeString": "function (uint256) external"
+                            }
+                          },
+                          "id": 2150,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "3829:23:12",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 2151,
+                        "nodeType": "ExpressionStatement",
+                        "src": "3829:23:12"
+                      }
+                    ]
+                  },
+                  "id": 2153,
+                  "nodeType": "IfStatement",
+                  "src": "3543:321:12",
+                  "trueBody": {
+                    "id": 2144,
+                    "nodeType": "Block",
+                    "src": "3572:177:12",
+                    "statements": [
+                      {
+                        "expression": {
+                          "arguments": [
+                            {
+                              "arguments": [
+                                {
+                                  "id": 2118,
+                                  "name": "this",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 4294967268,
+                                  "src": "3616:4:12",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_contract$_RarinonAuction_$2160",
+                                    "typeString": "contract RarinonAuction"
+                                  }
+                                }
+                              ],
+                              "expression": {
+                                "argumentTypes": [
+                                  {
+                                    "typeIdentifier": "t_contract$_RarinonAuction_$2160",
+                                    "typeString": "contract RarinonAuction"
+                                  }
+                                ],
+                                "id": 2117,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "lValueRequested": false,
+                                "nodeType": "ElementaryTypeNameExpression",
+                                "src": "3608:7:12",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_type$_t_address_$",
+                                  "typeString": "type(address)"
+                                },
+                                "typeName": {
+                                  "id": 2116,
+                                  "name": "address",
+                                  "nodeType": "ElementaryTypeName",
+                                  "src": "3608:7:12",
+                                  "typeDescriptions": {}
+                                }
+                              },
+                              "id": 2119,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "kind": "typeConversion",
+                              "lValueRequested": false,
+                              "names": [],
+                              "nodeType": "FunctionCall",
+                              "src": "3608:13:12",
+                              "tryCall": false,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            },
+                            {
+                              "baseExpression": {
+                                "expression": {
+                                  "id": 2120,
+                                  "name": "round",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 2094,
+                                  "src": "3623:5:12",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_struct$_Round_$1812_storage_ptr",
+                                    "typeString": "struct RarinonAuction.Round storage pointer"
+                                  }
+                                },
+                                "id": 2121,
+                                "isConstant": false,
+                                "isLValue": true,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "memberName": "bidders",
+                                "nodeType": "MemberAccess",
+                                "referencedDeclaration": 1808,
+                                "src": "3623:13:12",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                                  "typeString": "address[] storage ref"
+                                }
+                              },
+                              "id": 2127,
+                              "indexExpression": {
+                                "commonType": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                },
+                                "id": 2126,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "leftExpression": {
+                                  "expression": {
+                                    "expression": {
+                                      "id": 2122,
+                                      "name": "round",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 2094,
+                                      "src": "3637:5:12",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_Round_$1812_storage_ptr",
+                                        "typeString": "struct RarinonAuction.Round storage pointer"
+                                      }
+                                    },
+                                    "id": 2123,
+                                    "isConstant": false,
+                                    "isLValue": true,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "memberName": "bidders",
+                                    "nodeType": "MemberAccess",
+                                    "referencedDeclaration": 1808,
+                                    "src": "3637:13:12",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                                      "typeString": "address[] storage ref"
+                                    }
+                                  },
+                                  "id": 2124,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "memberName": "length",
+                                  "nodeType": "MemberAccess",
+                                  "src": "3637:20:12",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                  }
+                                },
+                                "nodeType": "BinaryOperation",
+                                "operator": "-",
+                                "rightExpression": {
+                                  "hexValue": "31",
+                                  "id": 2125,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "kind": "number",
+                                  "lValueRequested": false,
+                                  "nodeType": "Literal",
+                                  "src": "3660:1:12",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_rational_1_by_1",
+                                    "typeString": "int_const 1"
+                                  },
+                                  "value": "1"
+                                },
+                                "src": "3637:24:12",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              },
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "nodeType": "IndexAccess",
+                              "src": "3623:39:12",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            },
+                            {
+                              "expression": {
+                                "id": 2128,
+                                "name": "round",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 2094,
+                                "src": "3664:5:12",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_Round_$1812_storage_ptr",
+                                  "typeString": "struct RarinonAuction.Round storage pointer"
+                                }
+                              },
+                              "id": 2129,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "tokenId",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": 1801,
+                              "src": "3664:13:12",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              },
+                              {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              },
+                              {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            ],
+                            "expression": {
+                              "id": 2113,
+                              "name": "nft",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 1815,
+                              "src": "3587:3:12",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_contract$_IERC721_$1797",
+                                "typeString": "contract IERC721"
+                              }
+                            },
+                            "id": 2115,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "safeTransferFrom",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 1782,
+                            "src": "3587:20:12",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
+                              "typeString": "function (address,address,uint256) external"
+                            }
+                          },
+                          "id": 2130,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "3587:91:12",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 2131,
+                        "nodeType": "ExpressionStatement",
+                        "src": "3587:91:12"
+                      },
+                      {
+                        "expression": {
+                          "arguments": [
+                            {
+                              "expression": {
+                                "arguments": [
+                                  {
+                                    "id": 2139,
+                                    "name": "this",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 4294967268,
+                                    "src": "3723:4:12",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_contract$_RarinonAuction_$2160",
+                                      "typeString": "contract RarinonAuction"
+                                    }
+                                  }
+                                ],
+                                "expression": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_contract$_RarinonAuction_$2160",
+                                      "typeString": "contract RarinonAuction"
+                                    }
+                                  ],
+                                  "id": 2138,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "nodeType": "ElementaryTypeNameExpression",
+                                  "src": "3715:7:12",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_type$_t_address_$",
+                                    "typeString": "type(address)"
+                                  },
+                                  "typeName": {
+                                    "id": 2137,
+                                    "name": "address",
+                                    "nodeType": "ElementaryTypeName",
+                                    "src": "3715:7:12",
+                                    "typeDescriptions": {}
+                                  }
+                                },
+                                "id": 2140,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "kind": "typeConversion",
+                                "lValueRequested": false,
+                                "names": [],
+                                "nodeType": "FunctionCall",
+                                "src": "3715:13:12",
+                                "tryCall": false,
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              },
+                              "id": 2141,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "balance",
+                              "nodeType": "MemberAccess",
+                              "src": "3715:21:12",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            ],
+                            "expression": {
+                              "arguments": [
+                                {
+                                  "id": 2134,
+                                  "name": "dao",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 1817,
+                                  "src": "3701:3:12",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  }
+                                }
+                              ],
+                              "expression": {
+                                "argumentTypes": [
+                                  {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  }
+                                ],
+                                "id": 2133,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "lValueRequested": false,
+                                "nodeType": "ElementaryTypeNameExpression",
+                                "src": "3693:8:12",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_type$_t_address_payable_$",
+                                  "typeString": "type(address payable)"
+                                },
+                                "typeName": {
+                                  "id": 2132,
+                                  "name": "address",
+                                  "nodeType": "ElementaryTypeName",
+                                  "src": "3693:8:12",
+                                  "stateMutability": "payable",
+                                  "typeDescriptions": {}
+                                }
+                              },
+                              "id": 2135,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "kind": "typeConversion",
+                              "lValueRequested": false,
+                              "names": [],
+                              "nodeType": "FunctionCall",
+                              "src": "3693:12:12",
+                              "tryCall": false,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address_payable",
+                                "typeString": "address payable"
+                              }
+                            },
+                            "id": 2136,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "transfer",
+                            "nodeType": "MemberAccess",
+                            "src": "3693:21:12",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_transfer_nonpayable$_t_uint256_$returns$__$",
+                              "typeString": "function (uint256)"
+                            }
+                          },
+                          "id": 2142,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "3693:44:12",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 2143,
+                        "nodeType": "ExpressionStatement",
+                        "src": "3693:44:12"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "functionSelector": "43d726d6",
+            "id": 2155,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "close",
+            "nameLocation": "3290:5:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2084,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3295:2:12"
+            },
+            "returnParameters": {
+              "id": 2085,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3305:0:12"
+            },
+            "scope": 2160,
+            "src": "3281:590:12",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 2158,
+              "nodeType": "Block",
+              "src": "3968:2:12",
+              "statements": []
+            },
+            "id": 2159,
+            "implemented": true,
+            "kind": "receive",
+            "modifiers": [],
+            "name": "",
+            "nameLocation": "-1:-1:-1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2156,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3948:2:12"
+            },
+            "returnParameters": {
+              "id": 2157,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3968:0:12"
+            },
+            "scope": 2160,
+            "src": "3941:29:12",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 2161,
+        "src": "1067:2906:12",
+        "usedErrors": []
+      }
+    ],
+    "src": "33:3942:12"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.10+commit.fc410830.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-12-17T11:50:50.661Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "owner()": {
+        "details": "Returns the address of the current owner."
+      },
+      "renounceOwnership()": {
+        "details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+      },
+      "transferOwnership(address)": {
+        "details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
+=======
   
+>>>>>>> d01fced2c26a253a68f7784276d1aba4ccae3837
