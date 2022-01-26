@@ -14522,7 +14522,6 @@
                     "lValueRequested": false,
                     "memberName": "length",
                     "nodeType": "MemberAccess",
-<<<<<<< HEAD
                     "src": "1498:15:12",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -18716,6 +18715,3 @@
     "version": 1
   }
 }
-=======
-  
->>>>>>> d01fced2c26a253a68f7784276d1aba4ccae3837
