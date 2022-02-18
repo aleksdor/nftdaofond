@@ -1,57 +1,67 @@
 const fs = require('fs')
 var Web3 = require('web3');
 const HDWalletProvider = require('@truffle/hdwallet-provider');
+const Rollup = require('./apps/rollup')
+
 
 const TokenHelper = require('./TokenHelper');
 
 const conf = require('./conf')
 let provider = new HDWalletProvider(conf.web3_pk, conf.web3_url)
 var web3 = new Web3(provider);
+web3.defaultAccount = conf.web3_address
 
 let tokenHelper = new TokenHelper()
 
 
-let instances = fs.existsSync('./data/instances.json') ? require('./data/instances.json') : {}
+// let instances = fs.existsSync('./data/instances.json') ? require('./data/instances.json') : {}
 
-/**
- * Создать или загрузить контракт.
- * @param {*} json_file Путь к файлу контракта (build от truffle)
- * @param {*} arguments Аргументы создания контракта.
- * @returns 
- */
-async function instance(json_file, arguments) {
-    let json = require(json_file)
-    if (instances[json_file]) {
-        console.log(`Address ${instances[json_file].address} found for ${json_file}`)
-        return new web3.eth.Contract(json.abi, instances[json_file].address) //'0xC21F049fa08858839b9E6646970469E23A3575c7')
-    }
+// /**
+//  * Создать или загрузить контракт.
+//  * @param {*} json_file Путь к файлу контракта (build от truffle)
+//  * @param {*} arguments Аргументы создания контракта.
+//  * @returns 
+//  */
+// async function instance(json_file, arguments) {
+//     let json = require(json_file)
+//     if (instances[json_file]) {
+//         console.log(`Address ${instances[json_file].address} found for ${json_file}`)
+//         return new web3.eth.Contract(json.abi, instances[json_file].address) //'0xC21F049fa08858839b9E6646970469E23A3575c7')
+//     }
 
-    let contract = new web3.eth.Contract(json.abi)
+//     let contract = new web3.eth.Contract(json.abi)
 
-    try {
-        let res = await contract
-            .deploy({ data: json.bytecode, arguments })
-            .send({
-                from: conf.web3_address,
-                gas: '3000000'
-            })
+//     try {
+//         let res = await contract
+//             .deploy({ data: json.bytecode, arguments })
+//             .send({
+//                 from: conf.web3_address,
+//                 gas: '3000000'
+//             })
 
-        console.log(`Address ${res._address} created for ${json_file}`)
+//         console.log(`Address ${res._address} created for ${json_file}`)
 
-        instances[json_file] = { ...instances[json_file], address: res._address }
-        fs.writeFileSync('./data/instances.json', JSON.stringify(instances, null, '\t'))
-        // console.log(res._address)
-        return res
-    }
-    catch (ex) {
-        console.log(ex)
-    }
-}
+//         instances[json_file] = { ...instances[json_file], address: res._address }
+//         fs.writeFileSync('./data/instances.json', JSON.stringify(instances, null, '\t'))
+//         // console.log(res._address)
+//         return res
+//     }
+//     catch (ex) {
+//         console.log(ex)
+//     }
+// }
 
 let nft, dao, auction
 
 async function start() {
-    nft = await instance('./contracts/RarinonNFT.json', ['Name', 'SYMBOL'])
+    // console.log(web3)
+
+    let rollup = new Rollup('dev', __dirname + '/data', web3)
+
+    nft = await rollup.instance(__dirname + '/contracts/RarinonNFT.json', ['Name', 'SYMBOL'])
+
+    return
+
     // 10 minute
     dao = await instance('./contracts/RarinonDAO.json', [nft._address, 10 * 60, 8])
     auction = await instance('./contracts/RarinonAuction.json', [nft._address, dao._address, 10 * 60])
@@ -126,7 +136,7 @@ async function loop_auction_worker() {
 
 
 
-// Постоянно запрашиваем можно ли закрыть аукцион.
+// Постоянно запрашиваем можно ли закрыть раунд.
 let proposals = []
 
 async function loop_dao_worker() {
