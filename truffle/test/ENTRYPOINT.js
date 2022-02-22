@@ -1,8 +1,8 @@
-// + require('./RarinonNFT')
+require('./RarinonNFT')
 
-// + require('./RarinonNFTSpawn')
+// require('./RarinonNFTSpawn')
 
-// require('./RarinonDAO')
+require('./RarinonDAO')
 
 require('./RarinonAuction')
 
