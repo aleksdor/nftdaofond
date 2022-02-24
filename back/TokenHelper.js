@@ -8,7 +8,11 @@ module.exports = class {
         this.ipfs = new IPFS(ipfs_id || '', ipfs_key || '')
     }
 
-    async crteate_token() {
+    /**
+     * Creates random token? puts into ipfs and returns ipfs url.
+     * @returns {string} ipfs_url of token
+     */
+    async create_token() {
         // --- Готовим данные для токена
         // - Читаем папку слоев и генерируем по именам карту черт и читаем шаблон json-файла токена.
         let trs = TraitSet.fromDir('./data/sprites/Blume_png/')

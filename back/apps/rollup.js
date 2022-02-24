@@ -1,17 +1,16 @@
 const fs = require('fs')
+const path = require('path')
 
 /**
  * Класс для создания или восстановления экземпляра контракта.
  */
 module.exports = class {
     /**
-     * @param {string} domain Догмен работы (test, prod, dev, rinkebyX)
-     * @param {string} data_dir Путь к папке с конфигами.
      * @param {string} web3 Настроенный экземпляр Web3
+     * @param {string} cache_file Путь к afqфайлу с конфигом.
      */
-    constructor(domain, data_dir, web3) {
-        this.domain = domain
-        this.data_dir = data_dir
+    constructor(web3, cache_file) {
+        this.cache_file = cache_file
         this.web3 = web3
     }
 
@@ -22,17 +21,16 @@ module.exports = class {
      * @returns 
      */
     async instance(abi_file, args) {
-        let file_path = `${this.data_dir}/${this.domain}.json`
-
-        let instances = fs.existsSync(file_path) ? require(file_path) : {}
+        let name = path.basename(abi_file, '.json')
+        let instances = fs.existsSync(this.cache_file) ? require(this.cache_file) : {}
 
         let truffle = require(abi_file)
-        if (instances[abi_file]) {
-            console.log(`Address ${instances[abi_file].address} found for ${abi_file}`)
-            return new this.web3.eth.Contract(truffle.abi, instances[abi_file].address)
+        if (instances[name]) {
+            console.log(`Address ${instances[name]} found for ${abi_file}`)
+            return new this.web3.eth.Contract(truffle.abi, instances[name])
         }
 
-        console.log(`Address not found for ${abi_file}. Will deploy.`)
+        console.log(`Address not found for ${name}. Will deploy.`)
 
         let contract = new this.web3.eth.Contract(truffle.abi)
         try {
@@ -44,11 +42,11 @@ module.exports = class {
                     gas: '3000000'
                 })
 
-            console.log(`Address ${res._address} created for ${abi_file}`)
+            console.log(`Address ${res._address} created for ${name}`)
 
-            instances[abi_file] = { ...instances[abi_file], address: res._address }
-            fs.writeFileSync(file_path, JSON.stringify(instances, null, '\t'))
-            console.log(`Address ${res._address} for ${abi_file} saved.`)
+            instances[name] = res._address
+            fs.writeFileSync(this.cache_file, JSON.stringify(instances, null, '\t'))
+            console.log(`Address ${res._address} for ${name} saved.`)
             return res
         }
         catch (ex) {
