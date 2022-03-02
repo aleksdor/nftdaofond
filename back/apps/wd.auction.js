@@ -21,17 +21,17 @@ module.exports = class {
 	}
 
 	attach_events() {
-		this.auction.events.Open({}, async (err, event) => {
+		this.auction.events.Open({fromBlock: "earliest"}, async (err, event) => {
 			console.log("Auction.Open.event", event.returnValues);
 			this.handle_opened_auction(event.returnValues.round);
 		});
 
-		this.auction.events.Close({}, (err, event) => {
+		this.auction.events.Close({fromBlock: "earliest"}, (err, event) => {
 			console.log("Auction.Close.event", event.returnValues);
 			this.create_round();
 		});
 
-		this.auction.events.Bid({}, (err, event) => {
+		this.auction.events.Bid({fromBlock: "earliest"}, (err, event) => {
 			console.log("Auction.Bid.event", event.returnValues);
 		});
 	}

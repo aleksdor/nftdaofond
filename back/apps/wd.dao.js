@@ -39,17 +39,17 @@ module.exports = class {
 	}
 
 	attach_events() {
-		this.dao.events.Open({}, async (err, event) => {
+		this.dao.events.Open({fromBlock: "earliest"}, async (err, event) => {
 			console.log("Dao.Open.event", event.returnValues);
 			this.handle_opened_vote(event.returnValues.vote_id);
 		});
 
-		this.dao.events.Close({}, (err, event) => {
+		this.dao.events.Close({fromBlock: "earliest"}, (err, event) => {
 			console.log("Dao.Close.event", event.returnValues);
 			this.votes[event.returnValues.vote_id] = null;
 		});
 
-		this.dao.events.Vote({}, (err, event) => {
+		this.dao.events.Vote({fromBlock: "earliest"}, (err, event) => {
 			console.log("Dao.Vote.event", event.returnValues);
 		});
 	}
