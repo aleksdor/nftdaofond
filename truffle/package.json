@@ -3,13 +3,13 @@
   "lockfileVersion": 1,
   "scripts": {
     "compile": "truffle compile",
-    "test": "truffle test",
+    "test": "truffle test --show-events ./test/ENTRYPOINT.js",
     "deploy-ropsten": "truffle deploy --network ropsten"
   },
   "dependencies": {
+    "@openzeppelin/test-helpers": "^0.5.15",
     "openzeppelin-solidity": "4.4.0",
     "truffle": "^5.4.21",
     "truffle-hdwallet-provider": "^1.0.17"
   }
 }
- 
