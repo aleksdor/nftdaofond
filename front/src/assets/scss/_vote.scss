@@ -116,7 +116,7 @@ fieldset {
   font-size:15px;
 }
 
-#contact button[type="сreate"]:hover {
+#contact button[type="сreate"].loading:hover {
   background:#09C;
   -webkit-transition:background 0.3s ease-in-out;
   -moz-transition:background 0.3s ease-in-out;

@@ -40,7 +40,6 @@ class Bia {
 	async connectRpc(cb) {
 		this.web3Infura = new Web3(networkParameters.rpc)
 		const { rarinonNFTContract, rarinonAuctionContract, rarinonDAOContract } = await this.getNFTContracts(this.web3Infura)
-		console.log({ rarinonNFTContract, rarinonAuctionContract, rarinonDAOContract })
 		this.rarinonDAOContractRpc = rarinonDAOContract
 		this.rarinonNFTContractRpc = rarinonNFTContract
 		this.rarinonAuctionContractRpc = rarinonAuctionContract
@@ -84,21 +83,33 @@ class Bia {
 		}
 	}
 
+
+	async getImage(tokenUri) {
+		try {
+			const { data: { image } } = await axios.post(tokenUri)
+			const stream = await axios.post(image, {}, { responseType: 'arraybuffer' })
+			let blob = new Blob([stream.data], { type: "image/png" })
+			let url = URL.createObjectURL(blob)
+			return url
+		} catch (e) {
+			console.log(e)
+			return ''
+		}
+	}
+
 	async getCurrentTokenInfo() {
 		const CurrentID = await this.rarinonNFTContractRpc.methods.CurrentID().call()
 		// const historyCount = await this.rarinonAuctionContractRpc.methods.historyCount().call()
 		// const history = await this.rarinonAuctionContractRpc.methods.history(Number(historyCount) - 1).call()
 		const tokenUri = await this.rarinonNFTContractRpc.methods.tokenURI(CurrentID).call()
-		const { data: { image } } = await axios.get(tokenUri)
-		return { tokenImage: image, currentTokenId: CurrentID }
+		return { tokenImage: await this.getImage(tokenUri), currentTokenId: CurrentID }
 	}
 
 	async getTokenInfo(id) {
 		const history = await this.rarinonAuctionContractRpc.methods.history(Number(id)).call()
 		const { tokenId } = history
 		const tokenUri = await this.rarinonNFTContractRpc.methods.tokenURI(tokenId).call()
-		const { data: { image } } = await axios.get(tokenUri)
-		return { tokenImage: image, currentTokenId: tokenId }
+		return { tokenImage: await this.getImage(tokenUri), currentTokenId: tokenId }
 	}
 
 	async getBalance() {
@@ -177,16 +188,24 @@ class Bia {
 		return { history }
 	}
 
-	async createBid(bid) {
-		if (!this.connected) {
-			this.connect(async () => {
-				const res = await this.rarinonAuctionContract.methods.createBid().send({ from: this.accountAddress, value: bid })
-				console.log(res)
-			})
-		} else {
-			const res = await this.rarinonAuctionContract.methods.createBid().send({ from: this.accountAddress, value: bid })
-			console.log(res)
-		}
+	createBid(bid) {
+		return new Promise(async (resolve, reject) => {
+			try {
+				if (!this.connected) {
+					this.connect(async () => {
+						const res = await this.rarinonAuctionContract.methods.createBid().send({ from: this.accountAddress, value: bid })
+						console.log(res)
+						resolve(res)
+					})
+				} else {
+					const res = await this.rarinonAuctionContract.methods.createBid().send({ from: this.accountAddress, value: bid })
+					console.log(res)
+					resolve(res)
+				}
+			} catch (e) {
+				reject(e)
+			}
+		})
 	}
 
 	async createRound() {
@@ -197,7 +216,7 @@ class Bia {
 	}
 
 	async mint() {
-		const res = await this.rarinonNFTContract.methods.mint(rarinonAuctionAddress, 'https://ipfs.infura.io:5001/api/v0/cat?arg=QmZJBhp3dDmn7cP8jRa4extAKh16RLr13irSdk46hqqAvg').send({ from: this.accountAddress })
+		const res = await this.rarinonNFTContract.methods.mint(rarinonAuctionAddress, networkParameters.ipfs).send({ from: this.accountAddress })
 		console.log(res)
 	}
 

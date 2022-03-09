@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 import styled from 'styled-components'
 import mergeImages from 'merge-images'
-
+import Spinner from '../components/UI/Spinner'
 
 const GreenhouseHeaderRow = styled.div`
 	font-family: "Rajdhani";
@@ -179,6 +179,10 @@ const GreenHouse = () => {
 	// const [background, setBackground] = useState('')
 	const [nouns, setNouns] = useState([])
 	const [mergeData, setMergeData] = useState([])
+	const [count,
+		// setCount
+	] = useState(8)
+	const [isLoading, setIsLoading] = useState(true)
 	const showModalWindow = (image) => {
 		setModalImage(image)
 		setShowModal(true)
@@ -188,12 +192,19 @@ const GreenHouse = () => {
 	}
 
 	const merge = () => {
-		let newNouns = nouns
-		const images = mergeData.map(({ link, random, data }) => random ? data[Math.floor(Math.random() * data.length)].link : link)
-		mergeImages(images, { quality: 0.92 }).then(b64 => {
-			newNouns.unshift(b64)
-			setNouns([...newNouns])
-		});
+		return new Promise((resolve, reject) => {
+			try {
+				let newNouns = nouns
+				const images = mergeData.map(({ link, random, data }) => random ? data[Math.floor(Math.random() * data.length)].link : link)
+				mergeImages(images, { quality: 0.92 }).then(b64 => {
+					newNouns.unshift(b64)
+					setNouns([...newNouns])
+					resolve()
+				});
+			} catch (e) {
+				reject(e)
+			}
+		})
 	}
 
 	const pushMergeData = ({ folderName, link, data }) => {
@@ -227,13 +238,19 @@ const GreenHouse = () => {
 		setMergeData([...defaultMergeData])
 	}
 
+	const prepareImages = () => {
+		let promiseArr = []
+		for (let i = 0; i < count; i++) {
+			promiseArr.push(merge())
+		}
+		return promiseArr
+	}
+
 	useEffect(() => {
 		const imagesData = importAll(require.context('../assets/img/randomise'));
 		setRandomMergeData(imagesData)
 		setImagesData(imagesData)
-		for (let i = 0; i < 8; i++) {
-			merge()
-		}
+		Promise.all(prepareImages()).then(() => setIsLoading(false))
 		// eslint-disable-next-line
 	}, [])
 
@@ -283,9 +300,9 @@ const GreenHouse = () => {
 							}
 						</div>
 						<div className="col-lg-9">
-							<div className="row">
-								{nouns.map((noun) => (
-									<div className="col-lg-3 col-4" key={noun}>
+							<div className="row h-100">
+								{nouns.map((noun, index) => (
+									<div className={`col-lg-3 col-4${isLoading ? ' d-none' : ''}`} key={index}>
 										<div>
 											<NounImgWrapper>
 												<NounImg src={noun} alt="noun" className="img-fluid" onClick={() => showModalWindow(noun)} />
@@ -293,6 +310,11 @@ const GreenHouse = () => {
 										</div>
 									</div>
 								))}
+								{
+									isLoading ?
+										<Spinner color={'primary'}></Spinner>
+										: ''
+								}
 							</div>
 						</div>
 					</div>

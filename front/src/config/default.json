@@ -1,6 +1,7 @@
 {
   "networkParameters": {
-    "rpc": "https://ropsten.infura.io/v3/7f6d1c0c48cc4af7923ff507c64cd8e3"
+    "rpc": "https://ropsten.infura.io/v3/91775ece8632464fb0395c53c0cc8529",
+    "ipfs": "https://ipfs.infura.io:5001/api/v0/cat?arg=QmZJBhp3dDmn7cP8jRa4extAKh16RLr13irSdk46hqqAvg"
   },
   "rarinonDAOAddress": "0xAD3392d05F5822064974FE1494D8D3aa4ADc0A30",
   "rarinonNFTAddress": "0x137611E006Bd19663819068b71f015d20785DA17",

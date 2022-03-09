@@ -20,31 +20,59 @@ const NounInfo = () => {
 	const handieClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 	const [calc, setCalc] = useState('')
+	// const [initialBiddersInterval, setinItialBiddersInterval] = useState(setInterval(() => { }, 60000))
+	// const [lookForNewRoundInterval, setLookForNewRoundInterval] = useState(setInterval(() => { }, 60000))
 
-	const startTimer = (endTimestamp) => {
-		let web3 = {}
-		let difference = 0
-		api.connectRpc(() => {
-			web3 = api.web3Infura
-			web3.eth.getBlockNumber().then(async (blockNumber) => {
-				const { timestamp } = await web3.eth.getBlock(blockNumber)
-				const currentTime = new Date().getTime()
-				difference = currentTime - timestamp * 1000
-				const calc = setInterval(timer, 1000)
-				setCalc(calc)
-			})
+	const getBlockchainTimestampDifference = () => {
+		return new Promise((resolve, reject) => {
+			try {
+				api.connectRpc(() => {
+					const web3 = api.web3Infura
+					web3.eth.getBlockNumber().then(async (blockNumber) => {
+						const { timestamp } = await web3.eth.getBlock(blockNumber)
+						const currentTime = new Date().getTime()
+						const difference = currentTime - timestamp * 1000
+						resolve(difference)
+					})
+				})
+			} catch (e) {
+				reject(e)
+			}
 		})
-		function timer() {
-			const endAt = new Date(endTimestamp * 1000).getTime();
-			const currentTime = (new Date().getTime()) - difference;
+	}
+
+	const startTimer = async (endTimestamp) => {
+		const difference = await getBlockchainTimestampDifference()
+		setCalc(setInterval(timer, 1000))
+		async function timer() {
+			const endAt = new Date(endTimestamp * 1000).getTime()
+			const currentTime = (new Date().getTime()) - difference
+			console.log(endAt)
+			console.log(currentTime)
+			console.log(endAt - currentTime)
 			if (endAt - currentTime <= 0) {
 				setHours('0')
 				setMinutes('0')
 				setSeconds('0')
 				setBidDisabled(true)
-				// TODO doesnt work
-				// changeHistoryPage(currentHistoryId + 1)
-				// clearInterval(calc)
+				clearInterval(calc)
+				// const { currentHistoryId } = await api.getCurrentHistoryId()
+				// clearInterval(lookForNewRoundInterval)
+				// const lookForNewRound = setInterval(async () => {
+				// 	const history = await api.getCurrentHistoryId()
+				// 	const newHistoryId = history.currentHistoryId
+				// 	if (newHistoryId > currentHistoryId) {
+				// 		const { history: { end_at } } = await api.getHistory(newHistoryId)
+				// 		const difference = await getBlockchainTimestampDifference()
+				// 		const endAt = new Date(Number(end_at) * 1000).getTime()
+				// 		const currentTime = (new Date().getTime()) - difference
+				// 		if (endAt - currentTime > 0) {
+				// 			clearInterval(lookForNewRound)
+				// 			changeHistoryPage(newHistoryId)
+				// 		}
+				// 	}
+				// }, 10000)
+				// setLookForNewRoundInterval(lookForNewRound)
 			} else {
 				let delta = Math.abs(endAt - currentTime) / 1000;
 				const days = Math.floor(delta / 86400);
@@ -61,33 +89,45 @@ const NounInfo = () => {
 		}
 	}
 
+	const getBids = async (currentHistoryId) => {
+		const { history: { bids, bidders } } = await api.getHistory(currentHistoryId)
+		const numberBidsArr = bids.length ? bids.map((bid) => Number(bid) / 1000000000000000000) : [0]
+		const minimalBidded = Math.max.apply(Math, numberBidsArr)
+		const minimalBid = minimalBidded ? minimalBidded / 100 * 50 + minimalBidded : 0.01
+		setMinimalBid(minimalBid)
+		setBids(bids)
+		setBidders(bidders)
+	}
+
 	useEffect(() => {
 		api.connectRpc(async () => {
 			const { tokenImage, currentTokenId } = await api.getCurrentTokenInfo()
 			const { currentHistoryId } = await api.getCurrentHistoryId()
-			const { history: { bids, end_at, bidders } } = await api.getHistory(currentHistoryId)
-			const numberBidsArr = bids.length ? bids.map((bid) => Number(bid) / 1000000000000000000) : [0]
-			const minimalBidded = Math.max.apply(Math, numberBidsArr)
-			const minimalBid = minimalBidded ? minimalBidded / 100 * 50 + minimalBidded : 0.01
-			setCurrentHistoryId(currentHistoryId)
-			setMinimalBid(minimalBid)
-			startTimer(Number(end_at))
-			setBids(bids)
-			setBidders(bidders)
+			const { history: { end_at } } = await api.getHistory(currentHistoryId)
+			const difference = await getBlockchainTimestampDifference()
+			const endAt = new Date(Number(end_at) * 1000).getTime()
+			const currentTime = (new Date().getTime()) - difference
+			endAt - currentTime > 0 ? setCurrentHistoryId(currentHistoryId) : setCurrentHistoryId(currentHistoryId > 0 ? currentHistoryId - 1 : currentHistoryId)
+			// clearInterval(initialBiddersInterval)
+			// const getBidsInterval = setInterval(() => getBids(currentHistoryId), 10000)
+			// setinItialBiddersInterval(getBidsInterval)
 			setCurrentId(currentTokenId)
 			setCurrentTokenImage(tokenImage)
+			getBids(currentHistoryId)
+
+			clearInterval(calc)
+			startTimer(Number(end_at))
 		})
+		return () => {
+			// clearInterval(initialBiddersInterval)
+			clearInterval(calc)
+			// clearInterval(lookForNewRoundInterval)
+		}
+		// eslint-disable-next-line
 	}, [])
 
 	const createBid = async (bid) => {
-		await api.createBid(bid)
-		const { history: { bids, bidders } } = await api.getHistory(currentHistoryId)
-		const numberBidsArr = bids.map((bid) => Number(bid) / 1000000000000000000)
-		const minimalBidded = Math.max.apply(Math, numberBidsArr)
-		const minimalBid = minimalBidded / 100 * 50 + minimalBidded
-		setMinimalBid(minimalBid)
-		setBids(bids)
-		setBidders(bidders)
+		api.createBid(bid).then(() => getBids(currentHistoryId))
 	}
 
 	const changeHistoryPage = async (historyId) => {
@@ -96,10 +136,11 @@ const NounInfo = () => {
 		if (historyId >= historyCount) historyId = 0
 		setCurrentHistoryId(historyId)
 		const { tokenImage, currentTokenId } = await api.getTokenInfo(historyId)
-		let { history: { bids, end_at, bidders } } = await api.getHistory(historyId)
-		const numberBidsArr = bids.length ? bids.map((bid) => Number(bid) / 1000000000000000000) : [0]
-		const minimalBidded = Math.max.apply(Math, numberBidsArr)
-		const minimalBid = minimalBidded ? minimalBidded / 100 * 50 + minimalBidded : 0.01
+		const { history: { end_at } } = await api.getHistory(historyId)
+		getBids(historyId)
+		// clearInterval(initialBiddersInterval)
+		// const getBidsInterval = setInterval(() => getBids(historyId), 10000)
+		// setinItialBiddersInterval(getBidsInterval)
 		if (historyId !== historyCount - 1) {
 			setBidDisabled(true)
 			clearInterval(calc)
@@ -107,12 +148,10 @@ const NounInfo = () => {
 			setMinutes(0)
 			setSeconds(0)
 		} else {
+			clearInterval(calc)
 			startTimer(Number(end_at))
 			setBidDisabled(false)
 		}
-		setMinimalBid(minimalBid)
-		setBids(bids)
-		setBidders(bidders)
 		setCurrentId(currentTokenId)
 		setCurrentTokenImage(tokenImage)
 	}

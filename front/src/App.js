@@ -14,17 +14,21 @@ import CreateProposal from './views/CreateProposal';
 import Vote from './views/Vote';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
+import { useState } from 'react';
 
 function App() {
+
+  const [miningProposals, setMiningProposals] = useState([])
+
   return (
     <BrowserRouter>
       <Layout>
         <Switch>
           <Route exact path="/" component={Main} />
           <Route path="/dev" component={Dev} />
-          <Route path="/votes" component={Proposals} />
+          <Route path="/votes" render={(props) => <Proposals miningProposals={miningProposals} setMiningProposals={setMiningProposals} {...props} />} />
           <Route path="/greenhouse" component={GreenHouse} />
-          <Route path="/create-proposal" component={CreateProposal} />
+          <Route path="/create-proposal" render={(props) => <CreateProposal miningProposals={miningProposals} setMiningProposals={setMiningProposals} {...props} />} />
           <Route path="/vote/:id" component={Vote} />
           <Redirect to="/" />
         </Switch>

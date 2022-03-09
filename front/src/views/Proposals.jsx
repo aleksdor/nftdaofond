@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import api from '../api/api'
 
-const Vote = (props) => {
+const Vote = ({ miningProposals, history }) => {
 
 	const [proposals, setProposals] = useState([])
 
 	useEffect(() => {
-		api.connectRpc(async () => {
-			const proposals = await api.getProposals()
-			setProposals(proposals)
+		api.connectRpc(() => {
+			api.getProposals().then((proposals) => setProposals(proposals))
 		})
-	}, [])
+	}, [miningProposals])
 
 	return (
 		<div className="section-container">
@@ -27,15 +26,29 @@ const Vote = (props) => {
 								<h3 className="proposals-title">
 									Proposals
 								</h3>
-								<button type="button" className="proposals-btn btn btn-success" onClick={() => props.history.push('/create-proposal')}>Create Proposal</button>
+								<button type="button" className="proposals-btn btn btn-success" onClick={() => history.push('/create-proposal')}>Create Proposal</button>
 							</div>
+							{
+								miningProposals.map(({ title, account, amount }, index) => (
+									<button
+										key={index}
+										type="button"
+										className="proposals-link btn btn-dark"
+									>
+										<span className='link-title'>
+											<span>{title}</span>
+										</span>
+										<span className="badge bg-primary">still minning</span>
+									</button>
+								))
+							}
 							{
 								proposals.map(({ title, closed, approved, id, end_at, nyes, nno, account, amount }) => (
 									<button
 										key={id}
 										type="button"
 										className="proposals-link btn btn-dark"
-										onClick={() => props.history.push({ pathname: `/vote/${id}`, state: { id, closed, approved, title, end_at, nyes, nno, account, amount } })}
+										onClick={() => history.push({ pathname: `/vote/${id}`, state: { id, closed, approved, title, end_at, nyes, nno, account, amount } })}
 									>
 										<span className='link-title'>
 											<span>
