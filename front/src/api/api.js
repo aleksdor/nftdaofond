@@ -16,6 +16,7 @@ import { abi as rarinonNFTAbi, bytecode as rarinonNFTBytecode } from '../config/
 import { abi as rarinonDAOAbi, bytecode as rarinonDAOBytecode } from '../config/RarinonDAO.json';
 import { abi as rarinonAuctionAbi, bytecode as rarinonAuctionBytecode } from '../config/RarinonAuction.json';
 import { gasPrice } from '../config/default.json'
+import { resizeImageBlob } from '../lib/lib'
 class Bia {
 	constructor() {
 		this.connected = false;
@@ -83,13 +84,13 @@ class Bia {
 		}
 	}
 
-
 	async getImage(tokenUri) {
 		try {
 			const { data: { image } } = await axios.post(tokenUri)
 			const stream = await axios.post(image, {}, { responseType: 'arraybuffer' })
 			let blob = new Blob([stream.data], { type: "image/png" })
-			let url = URL.createObjectURL(blob)
+			let resized = await resizeImageBlob(blob, 400, 400)
+			let url = URL.createObjectURL(resized)
 			return url
 		} catch (e) {
 			console.log(e)
@@ -101,8 +102,13 @@ class Bia {
 		const CurrentID = await this.rarinonNFTContractRpc.methods.CurrentID().call()
 		// const historyCount = await this.rarinonAuctionContractRpc.methods.historyCount().call()
 		// const history = await this.rarinonAuctionContractRpc.methods.history(Number(historyCount) - 1).call()
-		const tokenUri = await this.rarinonNFTContractRpc.methods.tokenURI(CurrentID).call()
-		return { tokenImage: await this.getImage(tokenUri), currentTokenId: CurrentID }
+		try {
+			const tokenUri = await this.rarinonNFTContractRpc.methods.tokenURI(CurrentID).call()
+			return { tokenImage: await this.getImage(tokenUri), currentTokenId: CurrentID }
+		} catch (e) {
+			// TODO отправлять заглушку 
+			return { tokenImage: null, currentTokenId: CurrentID }
+		}
 	}
 
 	async getTokenInfo(id) {
@@ -110,6 +116,10 @@ class Bia {
 		const { tokenId } = history
 		const tokenUri = await this.rarinonNFTContractRpc.methods.tokenURI(tokenId).call()
 		return { tokenImage: await this.getImage(tokenUri), currentTokenId: tokenId }
+	}
+
+	getLink() {
+		return `https://ropsten.etherscan.io/address/${rarinonDAOAddress}`
 	}
 
 	async getBalance() {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Modal } from 'react-bootstrap';
+import { Modal, Placeholder } from 'react-bootstrap';
 import MiniCard from '../MiniCard';
 import api from '../../api/api'
 
@@ -17,6 +17,7 @@ const NounInfo = () => {
 	const [validatedBidInput, setValidatedBidInput] = useState('')
 	const [currentHistoryId, setCurrentHistoryId] = useState(0)
 	const [bidDisabled, setBidDisabled] = useState(false)
+	const [imageLoaded, setImageLoaded] = useState(false)
 	const handieClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 	const [calc, setCalc] = useState('')
@@ -101,22 +102,37 @@ const NounInfo = () => {
 
 	useEffect(() => {
 		api.connectRpc(async () => {
-			const { tokenImage, currentTokenId } = await api.getCurrentTokenInfo()
-			const { currentHistoryId } = await api.getCurrentHistoryId()
-			const { history: { end_at } } = await api.getHistory(currentHistoryId)
-			const difference = await getBlockchainTimestampDifference()
-			const endAt = new Date(Number(end_at) * 1000).getTime()
-			const currentTime = (new Date().getTime()) - difference
-			endAt - currentTime > 0 ? setCurrentHistoryId(currentHistoryId) : setCurrentHistoryId(currentHistoryId > 0 ? currentHistoryId - 1 : currentHistoryId)
-			// clearInterval(initialBiddersInterval)
-			// const getBidsInterval = setInterval(() => getBids(currentHistoryId), 10000)
-			// setinItialBiddersInterval(getBidsInterval)
-			setCurrentId(currentTokenId)
-			setCurrentTokenImage(tokenImage)
-			getBids(currentHistoryId)
+			const promiseArr = [
+				api.getCurrentTokenInfo().then(({ tokenImage, currentTokenId }) => {
+					setCurrentId(currentTokenId)
+					setCurrentTokenImage(tokenImage)
+				}),
+				api.getCurrentHistoryId().then(({ currentHistoryId }) => {
+					getBids(currentHistoryId)
+					api.getHistory(currentHistoryId).then(({ history: { end_at } }) => {
+						startTimer(Number(end_at))
+					})
+				})
+			]
 
-			clearInterval(calc)
-			startTimer(Number(end_at))
+			Promise.all(promiseArr).then(() => clearInterval(calc))
+
+			// const { tokenImage, currentTokenId } = await api.getCurrentTokenInfo()
+			// const { currentHistoryId } = await api.getCurrentHistoryId()
+			// const { history: { end_at } } = await api.getHistory(currentHistoryId)
+			// const difference = await getBlockchainTimestampDifference()
+			// const endAt = new Date(Number(end_at) * 1000).getTime()
+			// const currentTime = (new Date().getTime()) - difference
+			// endAt - currentTime > 0 ? setCurrentHistoryId(currentHistoryId) : setCurrentHistoryId(currentHistoryId > 0 ? currentHistoryId - 1 : currentHistoryId)
+			// // clearInterval(initialBiddersInterval)
+			// // const getBidsInterval = setInterval(() => getBids(currentHistoryId), 10000)
+			// // setinItialBiddersInterval(getBidsInterval)
+			// setCurrentId(currentTokenId)
+			// setCurrentTokenImage(tokenImage)
+			// getBids(currentHistoryId)
+
+			// clearInterval(calc)
+			// startTimer(Number(end_at))
 		})
 		return () => {
 			// clearInterval(initialBiddersInterval)
@@ -193,7 +209,8 @@ const NounInfo = () => {
 						<div className="auction-content col-lg-6">
 							<div className="auction-wrapper">
 								<div className="auction-img">
-									<img src={currentTokenImage} alt="" className="img-noun" />
+									{!imageLoaded && <Placeholder className="img-noun h-70" animation="glow"><Placeholder className="h-100 w-100" /></Placeholder>}
+									{<img onLoad={() => setImageLoaded(true)} src={currentTokenImage} alt="" className={`img-noun${imageLoaded ? '' : ' d-none'}`} />}
 								</div>
 							</div>
 						</div>

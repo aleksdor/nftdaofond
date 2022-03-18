@@ -12,6 +12,7 @@
     "authereum": "^0.1.14",
     "axios": "^0.24.0",
     "bootstrap": "^5.1.3",
+    "compress.js": "^1.2.2",
     "eth-provider": "^0.9.8",
     "ethereum-address": "0.0.4",
     "merge-images": "^2.0.0",

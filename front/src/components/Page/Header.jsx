@@ -7,6 +7,7 @@ const Header = () => {
 	const [connected, setConnected] = useState(api.connected)
 	const [address, setAddress] = useState(api.accountAddress)
 	const [balance, setBalance] = useState(0)
+	const [link, setLink] = useState('')
 
 	const connect = () => {
 		api.connect(({ address, success }) => {
@@ -18,6 +19,7 @@ const Header = () => {
 	useEffect(() => {
 		api.connectRpc(async () => {
 			const balance = await api.getBalance()
+			setLink(api.getLink())
 			setBalance(balance)
 		})
 	}, [])
@@ -45,7 +47,7 @@ const Header = () => {
 								</clipPath>
 							</defs>
 						</svg>
-						<span className="route ">TREASURY Ξ {balance}</span>
+						<span className="route " onClick={() => window.open(link, '_blank')}>TREASURY Ξ {balance}</span>
 						<NavLink to={'/'} className="route ">MAIN</NavLink>
 						<NavLink to={'/votes'} className="route ">VOTE</NavLink>
 						<NavLink to={'/greenhouse'} className="route ">GREENHOUSE</NavLink>

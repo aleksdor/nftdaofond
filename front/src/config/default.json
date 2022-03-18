@@ -1,10 +1,10 @@
 {
   "networkParameters": {
-    "rpc": "https://ropsten.infura.io/v3/91775ece8632464fb0395c53c0cc8529",
+    "rpc": "https://ropsten.infura.io/v3/a735bffc01344b14bfd5e9fbade06ab4",
     "ipfs": "https://ipfs.infura.io:5001/api/v0/cat?arg=QmZJBhp3dDmn7cP8jRa4extAKh16RLr13irSdk46hqqAvg"
   },
-  "rarinonDAOAddress": "0xAD3392d05F5822064974FE1494D8D3aa4ADc0A30",
-  "rarinonNFTAddress": "0x137611E006Bd19663819068b71f015d20785DA17",
-  "rarinonAuctionAddress": "0x5Add0Af574d778e54C00a14a6b152ecA50735Bfa",
+  "rarinonDAOAddress": "0x41af4178076cD50EcdE539E4B476Af86F3956B7A",
+  "rarinonNFTAddress": "0x00a449302b972B22F3583266115e80d5B5855003",
+  "rarinonAuctionAddress": "0xfeBA0E9e5b9be86445f5c70A661b1Ba14cDEDd5a",
   "gasPrice": "6.136600806"
 }
