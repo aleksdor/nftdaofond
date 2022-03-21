@@ -21,6 +21,7 @@ const Test = ({ history: { location: { state } }, match: { params: { id } } }) =
 	const [connected, setConnected] = useState(false)
 	const [isNftOwner, setIsNftOwner] = useState(false)
 	const [isNotVoted, setIsNotVoted] = useState(false)
+	const [isKeeper, setIsKeeper] = useState(false)
 
 	useEffect(() => {
 		if (state) {
@@ -34,13 +35,14 @@ const Test = ({ history: { location: { state } }, match: { params: { id } } }) =
 					setIsNotVoted(isNotVoted)
 					const isNftOwner = await api.isNftOwner()
 					setIsNftOwner(isNftOwner)
+					const isKeeper = await api.isKeeper()
+					setIsKeeper(isKeeper)
 				}
 			})
 		}
 		else {
 			api.connectRpc(async () => {
 				const proposal = await api.getProposal(id)
-				console.log(proposal)
 				setProposal(proposal)
 				setDate(new Date(Number(proposal.end_at) * 1000).toLocaleDateString(navigator.language))
 				setTime(new Date(Number(proposal.end_at) * 1000).toLocaleTimeString(navigator.language))
@@ -51,6 +53,8 @@ const Test = ({ history: { location: { state } }, match: { params: { id } } }) =
 						setIsNotVoted(isNotVoted)
 						const isNftOwner = await api.isNftOwner()
 						setIsNftOwner(isNftOwner)
+						const isKeeper = await api.isKeeper()
+						setIsKeeper(isKeeper)
 					}
 				})
 			})
@@ -73,7 +77,15 @@ const Test = ({ history: { location: { state } }, match: { params: { id } } }) =
 			setProposal(voteResult)
 		})
 	}
-	console.log((100 * Number(proposal.nyes)) / (Number(proposal.nno) + Number(proposal.nyes)))
+
+	const decline = () => {
+		api.connect(async () => {
+			await api.decline(proposal.id)
+			const voteResult = await api.getProposal(proposal.id)
+			setProposal(voteResult)
+		})
+	}
+
 	return (
 		<div className="section-container">
 			<div className="container-lg">
@@ -100,13 +112,19 @@ const Test = ({ history: { location: { state } }, match: { params: { id } } }) =
 						{/* {connected ? '' : <div>You need to connect to vote</div>}
 						{isNftOwner ? '' : <div>You need to own nft to vote</div>}
 						{isNotVoted ? '' : <div>You have already voted</div>} */}
-						{
-							connected && isNftOwner && isNotVoted ?
-								<VoteButtons>
+						<VoteButtons>
+							{
+								connected && isNftOwner && isNotVoted &&
+								<React.Fragment>
 									<Button variant="outlined" onClick={voteFor}>Vote for</Button>
 									<Button variant="outlined" onClick={voteAgainst}>Vote against</Button>
-								</VoteButtons> : ''
-						}
+								</React.Fragment>
+							}
+							{
+								connected && isNftOwner && isKeeper &&
+								<Button variant="outlined" color="secondary" onClick={decline}>Decline</Button>
+							}
+						</VoteButtons>
 						<div className="vote-progress row">
 							<div className="col-lg-4">
 								<div className="vote-card card">

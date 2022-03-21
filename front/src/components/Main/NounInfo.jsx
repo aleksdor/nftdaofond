@@ -48,9 +48,9 @@ const NounInfo = () => {
 		async function timer() {
 			const endAt = new Date(endTimestamp * 1000).getTime()
 			const currentTime = (new Date().getTime()) - difference
-			console.log(endAt)
-			console.log(currentTime)
-			console.log(endAt - currentTime)
+			// console.log(endAt)
+			// console.log(currentTime)
+			// console.log(endAt - currentTime)
 			if (endAt - currentTime <= 0) {
 				setHours('0')
 				setMinutes('0')
@@ -103,8 +103,9 @@ const NounInfo = () => {
 	useEffect(() => {
 		api.connectRpc(async () => {
 			const promiseArr = [
-				api.getCurrentTokenInfo().then(({ tokenImage, currentTokenId }) => {
-					setCurrentId(currentTokenId)
+				api.getCurrentTokenInfo().then(async ({ tokenImage, currentTokenId }) => {
+					const { currentRoundId } = await api.getCurrentRoundId()
+					setCurrentId(currentRoundId)
 					setCurrentTokenImage(tokenImage)
 				}),
 				api.getCurrentHistoryId().then(({ currentHistoryId }) => {
@@ -151,7 +152,7 @@ const NounInfo = () => {
 		if (historyId < 0) historyId = historyCount - 1
 		if (historyId >= historyCount) historyId = 0
 		setCurrentHistoryId(historyId)
-		const { tokenImage, currentTokenId } = await api.getTokenInfo(historyId)
+		const { tokenImage } = await api.getTokenInfo(historyId)
 		const { history: { end_at } } = await api.getHistory(historyId)
 		getBids(historyId)
 		// clearInterval(initialBiddersInterval)
@@ -168,7 +169,7 @@ const NounInfo = () => {
 			startTimer(Number(end_at))
 			setBidDisabled(false)
 		}
-		setCurrentId(currentTokenId)
+		setCurrentId(historyId + 1)
 		setCurrentTokenImage(tokenImage)
 	}
 

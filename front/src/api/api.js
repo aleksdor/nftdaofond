@@ -93,8 +93,16 @@ class Bia {
 			let url = URL.createObjectURL(resized)
 			return url
 		} catch (e) {
-			console.log(e)
 			return ''
+		}
+	}
+
+	async getCurrentRoundId() {
+		try {
+			const currentRoundId = await this.rarinonAuctionContractRpc.methods.historyCount().call()
+			return { currentRoundId }
+		} catch (e) {
+			return { currentRoundId: 0 }
 		}
 	}
 
@@ -129,18 +137,14 @@ class Bia {
 
 	async closeRound() {
 		const canClose = await this.rarinonAuctionContract.methods.canClose().call()
-		console.log(canClose)
 		if (canClose) {
-			const res = await this.rarinonAuctionContract.methods.close().send({ from: this.accountAddress })
-			console.log(res)
+			await this.rarinonAuctionContract.methods.close().send({ from: this.accountAddress })
 		}
 	}
 
 	async addProposal(account, amount, title, url) {
 		const amountInWei = this.web3.utils.toWei(String(amount))
-		console.log({ account, amountInWei, title, url })
-		const res = await this.rarinonDAOContract.methods.addProposal(account, amountInWei, title, url).send({ from: this.accountAddress, gasPric: this.web3.utils.toWei(gasPrice) })
-		console.log(res)
+		await this.rarinonDAOContract.methods.addProposal(account, amountInWei, title, url).send({ from: this.accountAddress, gasPric: this.web3.utils.toWei(gasPrice) })
 	}
 
 	async getProposals() {
@@ -161,6 +165,16 @@ class Bia {
 			const proposal = ({ id, ...await this.rarinonDAOContractRpc.methods.history(id).call() })
 			return proposal
 		}
+	}
+
+	async decline(id) {
+		const res = await this.rarinonDAOContract.methods.decline(id).send({ from: this.accountAddress })
+		return res
+	}
+
+	async isKeeper() {
+		const isKeeper = await this.rarinonDAOContract.methods.is_keeper(this.accountAddress).call()
+		return isKeeper
 	}
 
 	async isNftOwner() {
@@ -204,12 +218,10 @@ class Bia {
 				if (!this.connected) {
 					this.connect(async () => {
 						const res = await this.rarinonAuctionContract.methods.createBid().send({ from: this.accountAddress, value: bid })
-						console.log(res)
 						resolve(res)
 					})
 				} else {
 					const res = await this.rarinonAuctionContract.methods.createBid().send({ from: this.accountAddress, value: bid })
-					console.log(res)
 					resolve(res)
 				}
 			} catch (e) {
@@ -221,13 +233,11 @@ class Bia {
 	async createRound() {
 		const CurrentID = await this.rarinonNFTContract.methods.CurrentID().call()
 		this.CurrentID = CurrentID
-		const res = await this.rarinonAuctionContract.methods.createRound(CurrentID).send({ from: this.accountAddress })
-		console.log(res)
+		await this.rarinonAuctionContract.methods.createRound(CurrentID).send({ from: this.accountAddress })
 	}
 
 	async mint() {
-		const res = await this.rarinonNFTContract.methods.mint(rarinonAuctionAddress, networkParameters.ipfs).send({ from: this.accountAddress })
-		console.log(res)
+		await this.rarinonNFTContract.methods.mint(rarinonAuctionAddress, networkParameters.ipfs).send({ from: this.accountAddress })
 	}
 
 	async connect(callback = () => { }) {
@@ -271,7 +281,6 @@ class Bia {
 							this.rarinonNFTContract = rarinonNFTContract
 							this.rarinonAuctionContract = rarinonAuctionContract
 							this.rarinonDAOContract = rarinonDAOContract
-							console.log({ rarinonNFTContract, rarinonAuctionContract, rarinonDAOContract })
 							callback({
 								address: this.accountAddress,
 								success: true,
